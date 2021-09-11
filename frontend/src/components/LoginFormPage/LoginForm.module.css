@@ -2,13 +2,13 @@
     font-family: 'Inter', sans-serif;;
  }
 
-body {
+/* body {
     margin: 0;
     padding: 0;
-    /* height: 100vh;
+    height: 100vh;
     width: 100vw;
-    background-image: url("https://images.squarespace-cdn.com/content/v1/6099bdee28fc4e72bd84675b/f583586d-0670-471b-bd9a-f1086b6b123a/pizzeria-bianco.jpg"); */
-}
+    background-image: url("https://images.squarespace-cdn.com/content/v1/6099bdee28fc4e72bd84675b/f583586d-0670-471b-bd9a-f1086b6b123a/pizzeria-bianco.jpg");
+} */
 
 .container {
     display: flex;
@@ -19,9 +19,9 @@ body {
     background-image: url("https://images.squarespace-cdn.com/content/v1/6099bdee28fc4e72bd84675b/f583586d-0670-471b-bd9a-f1086b6b123a/pizzeria-bianco.jpg");
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;
     opacity: .8;
+    box-sizing: border-box;
 }
 
 .colorFilter {
@@ -29,6 +29,7 @@ body {
     width: 100vw;
     background-color: rgba(248, 227, 159, 0.2);
     position: absolute;
+    box-sizing: border-box;
 }
 
 .login {
