@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import './SignupForm.css'
+import signupcss from './SignupForm.module.css'
 
 const SignupFormPage = () => {
     const dispatch = useDispatch();
@@ -36,46 +37,66 @@ const SignupFormPage = () => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
-            <ul>
-                {errors.map((error, index) => (
-                    <li key={index}>{error}</li>
-                ))}
-            </ul>
-            <label> Username
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-            </label>
-            <label> Email
-                <input
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </label>
-            <label> Password
-                <input
-                    type="text"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <label> Confirm Password
-                <input
-                    type="text"
-                    value={confirmed}
-                    onChange={(e) => setConfirmed(e.target.value)}
-                    required
-                />
-            </label>
-            <button type="submit">Sign Up</button>
-        </form>
+        <div className={signupcss.container}>
+            <div className={signupcss.colorFilter}></div>
+            <div className={signupcss.signup} >
+                <form className={signupcss.signupForm} onSubmit={onSubmit}>
+                    <h2>UNSLIC'D</h2>
+                    <p>Let's get this slice!</p>
+                    <ul>
+                        {errors.map((error, index) => (
+                            <li className={signupcss.errors} key={index}>{error}</li>
+                        ))}
+                    </ul>
+                    <div>
+                        <label> Username
+                            <input
+                                className={signupcss.formInput}
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label> Email
+                            <input
+                                className={signupcss.formInput}
+                                type="text"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label> Password
+                            <input
+                                className={signupcss.formInput}
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label> Confirm Password
+                            <input
+                                className={signupcss.formInput}
+                                type="password"
+                                value={confirmed}
+                                onChange={(e) => setConfirmed(e.target.value)}
+                                required
+                            />
+                        </label>
+                    </div>
+                    <button className={signupcss.btn} type="submit">Sign Up</button>
+                    <Link className={signupcss.login} to='/login'>Already have an account? Login here!</Link>
+                </form>
+            </div>
+        </div>
     )
 }
 

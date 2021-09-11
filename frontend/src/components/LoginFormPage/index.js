@@ -38,7 +38,7 @@ const LoginFormPage = () => {
                     <p>Let's get this slice!</p>
                     <ul>
                         {errors.map((error, index) => (
-                            <li className="errors" key={index}> {error} </li>
+                            <li className={logincss.errors} key={index}> {error} </li>
                         ))}
                     </ul>
                     <div className={logincss.loginFormGroup}>
