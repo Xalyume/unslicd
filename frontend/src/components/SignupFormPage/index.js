@@ -38,7 +38,6 @@ const SignupFormPage = () => {
 
     return (
         <div className={signupcss.container}>
-            <div className={signupcss.colorFilter}></div>
             <div className={signupcss.signup} >
                 <form className={signupcss.signupForm} onSubmit={onSubmit}>
                     <h2>UNSLIC'D</h2>
