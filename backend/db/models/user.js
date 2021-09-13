@@ -50,8 +50,11 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
   };
   User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
+    const { id, username, email, createdAt } = this; // context will be the User instance
+
+    const stringDate = createdAt.toLocaleDateString()
+
+    return { id, username, email, createdAt: stringDate };
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
