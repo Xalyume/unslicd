@@ -1,0 +1,100 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.subContainer1{
+    height: 40vh;
+    width: 100%;
+}
+
+.inner {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 40vh;
+}
+
+.colorFilter {
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("https://cdn.vox-cdn.com/thumbor/bIr57bi-XPWbA85vV175JEHWKpI=/0x0:5760x3840/1400x1050/filters:focal(2420x1460:3340x2380):no_upscale()/cdn.vox-cdn.com/uploads/chorus_image/image/61524043/Joe_and_Pat_s_14.13.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    height: 40vh;
+    width: 100%;
+    opacity: .9;
+    position: absolute;
+    z-index: -1;
+}
+
+.containerText{
+    color: white;
+    text-align: center;
+    font-size: 24px;
+}
+
+.header2 {
+    color: white;
+    text-align: center;
+    font-size: 70px;
+}
+
+.header3 {
+    color: white;
+    text-align: center;
+}
+
+.subContainer2 {
+    display: flex;
+    background-color: #D7A532;
+    height: 30vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    opacity: .9;
+}
+
+.textContainer > p {
+    color: white;
+    font-size: 22px;
+    text-align: center;
+}
+
+.features {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.subContainer3>h3 {
+    font-size: 38px;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.featureText {
+    border: 2px solid black;
+    border-radius: 2px;
+    width: auto;
+    height: auto;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(168, 57, 57, 0.2);
+    border: 2px solid black;
+    border-radius: 6px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+  }
+
+  .cardContainer>p{
+      font-size: 15px;
+      text-align: center;
+  }
