@@ -1,8 +1,22 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+// import { useHistory } from 'react-router-dom'
+import User from '../User'
 
 import homepagecss from './HomePage.module.css'
 
 function HomePage() {
+    const sessionUser = useSelector(state => state.session.user);
+
+    if (sessionUser) {
+        return (
+            <>
+                {/* <h1>You're logged i n!</h1> */}
+                <User />
+            </>
+        )
+    }
+
     return (
         <>
             <div className={homepagecss.container}>
@@ -32,7 +46,7 @@ function HomePage() {
                         </div>
                         <div className={homepagecss.card}>
                             <img src={"https://image.freepik.com/free-vector/illustration-pizza-place_53876-43651.jpg"}
-                                alt="store" style={{ width: "100%"}} />
+                                alt="store" style={{ width: "100%" }} />
                             <div className={homepagecss.cardContainer}>
                                 <p>Add Your Favorite Local Pizza Spots!</p>
                             </div>

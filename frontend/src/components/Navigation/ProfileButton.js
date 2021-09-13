@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
+import navcss from './Navigation.module.css'
+
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
@@ -29,20 +31,21 @@ function ProfileButton({ user }) {
     };
 
     return (
-        <>
-            <button onClick={openMenu}>
-                <i className="fas fa-user-circle" />
+        <div className={navcss.sectionsTwo}>
+            <button onClick={openMenu} className={navcss.profile}>
+                <img src={"https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"}
+                alt="profile_pic" className={navcss.pic}/>
             </button>
             {showMenu && (
-                <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        <button onClick={logout}>Log Out</button>
-                    </li>
-                </ul>
+                <div>
+                    <p className={navcss.btn}>{user.username}</p>
+                    <p className={navcss.btn}>{user.email}</p>
+                    <p>
+                        <button onClick={logout} className={navcss.logoutbtn}>Log Out</button>
+                    </p>
+                </div>
             )}
-        </>
+        </div>
     );
 }
 

@@ -23,7 +23,7 @@
     align-items: center;
 }
 
-.btn{
+.btn {
     color: white;
     text-decoration: none;
     text-emphasis: none;
@@ -32,4 +32,28 @@
 
 .home {
     font-size: xx-large;
+}
+
+.profile {
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    width: 15%;
+}
+
+.pic {
+    width: 90%;
+    height: 90%;
+    border-radius: 50px;
+}
+
+.logoutbtn {
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    text-emphasis: none;
+    margin: 0 15px;
+    cursor: pointer;
 }
