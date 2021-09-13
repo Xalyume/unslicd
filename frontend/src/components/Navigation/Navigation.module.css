@@ -4,6 +4,7 @@
     justify-content: space-around;
     height: 4em;
     background-color: rgba(192, 78, 68, .9);
+    width: auto;
 }
 
 .sectionsOne {
