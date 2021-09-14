@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addSlice } from '../../store/slice';
 
 import slicecss from './SliceForm.module.css'
 
 const SliceForm = () => {
     const sessionUser = useSelector(state => state.session.user);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const [name, setName] = useState('');
     const [desc, setDesc] = useState('');
@@ -16,9 +19,19 @@ const SliceForm = () => {
         <Redirect to='/login' />
     )
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
 
+        const payload = {
+            name,
+            desc,
+            addedBy: sessionUser.id
+        }
+
+        let newSlice = await dispatch(addSlice(payload));
+        if (newSlice) {
+            history.push(`/`);
+        }
     }
 
     return (
