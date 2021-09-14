@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { Link } from 'react-router-dom';
 
 import slicecss from './SliceForm.module.css'
