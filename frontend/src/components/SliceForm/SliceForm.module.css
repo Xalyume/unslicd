@@ -78,3 +78,7 @@
     border: 3px solid #C04E44;
     border-radius: 6px;
 }
+
+.errors {
+    color: red;
+}
