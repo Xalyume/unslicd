@@ -11,7 +11,6 @@ function HomePage() {
     if (sessionUser) {
         return (
             <>
-                {/* <h1>You're logged i n!</h1> */}
                 <User />
             </>
         )

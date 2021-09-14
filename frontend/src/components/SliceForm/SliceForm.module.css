@@ -1,5 +1,13 @@
 .container {
     margin: 8% 30%;
+    padding: 25px;
+    background-color: #d7a63254;
+    border-radius: 36px;
+}
+
+.container > h1 {
+    text-align: center;
+    margin: 5% 0;
 }
 
 .form {
@@ -13,11 +21,32 @@
     margin: 25px 0;
 }
 
+.formItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.formItem > * {
+    align-self: flex-start;
+}
+
+.formInput {
+    border: 1px solid rgba(0, 0, 0, 0.418);
+}
+
+.text {
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+}
+
 .textbox {
     resize: none;
-    height: 75px;
-    width: 300px;
+    height: 100px;
+    width: 350px;
+    border-radius: 5px;
 }
+
 
 .btns > * {
     margin: 0 5px;

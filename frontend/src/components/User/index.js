@@ -20,9 +20,9 @@ const User = () => {
                     <p>Member Since: {membership[1]}/{membership[2]}/{membership[0]}</p>
                 </div>
                 <div className={usercss.btnGroup}>
-                    <Link to='../checkin' className={usercss.btn}>Check In</Link>
-                    <Link to='../addslice' className={usercss.btn}>Add A New Slice</Link>
-                    <Link to='../addstore' className={usercss.btn}>Add A New Store</Link>
+                    <Link to='/checkin' className={usercss.btn}>Check In</Link>
+                    <Link to='/addslice' className={usercss.btn}>Add A New Slice</Link>
+                    <Link to='/addstore' className={usercss.btn}>Add A New Store</Link>
                 </div>
             </div>
             <div>
