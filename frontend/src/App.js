@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { Route, Switch } from 'react-router-dom';
+
 import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation'
 import HomePage from './components/HomePage'
+import SliceForm from './components/SliceForm'
+import StoreForm from './components/StoreForm'
+
 import * as sessionActions from "./store/session";
 
 
@@ -30,6 +34,12 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/addslice">
+            <SliceForm />
+          </Route>
+          <Route path="/addstore">
+            <StoreForm />
           </Route>
         </Switch>
       )}
