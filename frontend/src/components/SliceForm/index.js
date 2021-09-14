@@ -24,28 +24,30 @@ const SliceForm = () => {
     return (
         <>
             <div className={slicecss.container}>
-                <h1>Add a New Slice!</h1>
-                <form className={slicecss.form}
-                    onSubmit={onSubmit}
-                >
-                    {/* <ul>
+                <div className={slicecss.pic} ></div>
+                <div className={slicecss.formContainer}>
+                    <h1>Add a New Slice!</h1>
+                    <form className={slicecss.form}
+                        onSubmit={onSubmit}
+                    >
+                        {/* <ul>
                     {errors.map((error, index) => (
                         <li className={logincss.errors} key={index}> {error} </li>
                     ))}
                     </ul> */}
-                    <div className={slicecss.formItem}>
-                        <label> Name of Slice:</label>
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className={`${slicecss.formInput} ${slicecss.text}`}
-                            required
-                        />
+                        <div className={slicecss.formItem}>
+                            <label> Name of Slice:</label>
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className={`${slicecss.formInput} ${slicecss.text}`}
+                                required
+                            />
 
-                    </div>
-                    <div className={slicecss.formItem}>
-                        <label> Description:</label>
+                        </div>
+                        <div className={slicecss.formItem}>
+                            <label> Description:</label>
                             <textarea
                                 type="text"
                                 value={desc}
@@ -53,12 +55,13 @@ const SliceForm = () => {
                                 className={`${slicecss.textbox} ${slicecss.formInput}`}
                                 required
                             />
-                    </div>
-                    <div className={slicecss.btns}>
-                        <button type="submit">Add A Slice</button>
-                        <Link to='/'>Cancel</Link>
-                    </div>
-                </form>
+                        </div>
+                        <div className={slicecss.btns}>
+                            <button type="submit">Add A Slice</button>
+                            <Link to='/'>Cancel</Link>
+                        </div>
+                    </form>
+                </div>
             </div>
         </>
     )
