@@ -28,6 +28,10 @@ const User = () => {
             <div>
 
             </div>
+            <div className={usercss.links}>
+                <Link className={usercss.btn} to='/slices'>All Slices</Link>
+                <Link className={usercss.btn} to='/stores'>All Stores</Link>
+            </div>
         </div>
     )
 }

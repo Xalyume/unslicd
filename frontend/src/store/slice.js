@@ -5,10 +5,27 @@ const ADD_SLICE = "slice/ADD"
 const EDIT_SLICE = "slice/EDIT"
 const DEL_SLICE = "slice/DELETE"
 
+const get = slices => ({
+    type: GET_SLICE,
+    slices,
+})
+
 const add = slice => ({
     type: ADD_SLICE,
     slice,
 })
+
+
+export const getSlices = () => async dispatch => {
+    const response = await csrfFetch('/api/slices')
+
+    const slices = await response.json();
+    console.log("GET fetch request to backend", typeof slices) // gets back object
+    console.log("GET fetch request to backend", slices) // gets back object
+    console.log(slices[0])
+
+    dispatch(get(slices));
+}
 
 export const addSlice = (sliceData) => async dispatch => {
     const { name, description, addedBy } = sliceData
@@ -39,8 +56,7 @@ const sliceReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case GET_SLICE:
-            newState = Object.assign({}, state);
-            newState.user = action.payload;
+            newState = {...action.slices}
             return newState;
         case ADD_SLICE:
             newState = Object.assign({}, state);
