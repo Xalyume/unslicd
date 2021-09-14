@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
@@ -6,6 +7,8 @@ import navcss from './Navigation.module.css'
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
+    const history = useHistory();
+
     const [showMenu, setShowMenu] = useState(false);
 
     const openMenu = () => {
@@ -28,13 +31,15 @@ function ProfileButton({ user }) {
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
+        
+        return history.push('/');
     };
 
     return (
         <div className={navcss.sectionsTwo}>
             <button onClick={openMenu} className={navcss.profile}>
                 <img src={"https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"}
-                alt="profile_pic" className={navcss.pic}/>
+                    alt="profile_pic" className={navcss.pic} />
             </button>
             {showMenu && (
                 <div>
