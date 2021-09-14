@@ -1,0 +1,31 @@
+.container {
+    margin: 8% 30%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.form > * {
+    margin: 25px 0;
+}
+
+.textbox {
+    resize: none;
+    height: 75px;
+    width: 300px;
+}
+
+.btns > * {
+    margin: 0 5px;
+    padding: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: #C04E44;
+    color: white;
+    border: 3px solid #C04E44;
+    border-radius: 6px;
+}
