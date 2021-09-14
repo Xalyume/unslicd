@@ -12,8 +12,8 @@ const SliceForm = () => {
     const history = useHistory();
 
     const [name, setName] = useState('');
-    const [desc, setDesc] = useState('');
-
+    const [description, setDescription] = useState('');
+    const [errors, setErrors] = useState([]);
 
     if (!sessionUser) return (
         <Redirect to='/login' />
@@ -22,16 +22,24 @@ const SliceForm = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
+        setErrors([]);
+
         const payload = {
             name,
-            desc,
+            description,
             addedBy: sessionUser.id
         }
 
-        let newSlice = await dispatch(addSlice(payload));
-        if (newSlice) {
-            history.push(`/`);
-        }
+        return await dispatch(addSlice(payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
+
+        // let newSlice = await dispatch(addSlice(payload));
+        // if (newSlice) {
+        //     history.push(`/`);
+        // }
     }
 
     return (
@@ -43,11 +51,11 @@ const SliceForm = () => {
                     <form className={slicecss.form}
                         onSubmit={onSubmit}
                     >
-                        {/* <ul>
-                    {errors.map((error, index) => (
-                        <li className={logincss.errors} key={index}> {error} </li>
-                    ))}
-                    </ul> */}
+                        <ul>
+                            {errors.map((error, index) => (
+                                <li className={slicecss.errors} key={index}> {error} </li>
+                            ))}
+                        </ul>
                         <div className={slicecss.formItem}>
                             <label> Name of Slice:</label>
                             <input
@@ -63,8 +71,8 @@ const SliceForm = () => {
                             <label> Description:</label>
                             <textarea
                                 type="text"
-                                value={desc}
-                                onChange={(e) => setDesc(e.target.value)}
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
                                 className={`${slicecss.textbox} ${slicecss.formInput}`}
                                 required
                             />
