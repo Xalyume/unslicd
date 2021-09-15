@@ -1,13 +1,13 @@
 import React from 'react';
 
+import slicecss from './Slice.module.css';
+
 const SliceCard = ({ slice }) => {
 
-    console.log(slice)
-
     return (
-        <div>
-            <h2>{slice.name}</h2>
-            <p>{slice.description}</p>
+        <div className={slicecss.cardContainer}>
+            <h3>{slice?.name}</h3>
+            <p>{slice?.description}</p>
         </div>
     )
 }

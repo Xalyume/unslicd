@@ -15,7 +15,7 @@ const Slice = () => {
 
     const sliceArr = Object.values(slices)
 
-    console.log(sliceArr)
+    console.log(slices)
 
     useEffect(() => {
         dispatch(getSlices())
@@ -27,11 +27,13 @@ const Slice = () => {
 
     return (
         // null
-        <div>
+        <div className={slicecss.container}>
             <h1>All Slices</h1>
-            {sliceArr.map((slice) => (
-                <SliceCard slice={slice} />
-            ))}
+            <div>
+                {sliceArr.map((slice) => (
+                    <SliceCard slice={slice} />
+                ))}
+            </div>
         </div>
     )
 }

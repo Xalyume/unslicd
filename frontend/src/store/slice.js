@@ -58,7 +58,7 @@ const sliceReducer = (state = initialState, action) => {
         case ADD_SLICE:
             let addState = {};
             const newSlice = action.payload
-            addState = {...state, newSlice};
+            addState = { ...state, newSlice };
             return addState;
         default:
             return state;
