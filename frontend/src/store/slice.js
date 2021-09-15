@@ -15,6 +15,11 @@ const add = slice => ({
     slice,
 })
 
+const del = id => ({
+    type: DEL_SLICE,
+    id
+})
+
 
 export const getSlices = () => async dispatch => {
     const response = await csrfFetch('/api/slices')
@@ -47,9 +52,28 @@ export const addSlice = (sliceData) => async dispatch => {
     }
 }
 
+export const deleteSlice = (slice) => async dispatch => {
+    const id = slice
+
+    const response = await csrfFetch(`/api/slices/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id
+        })
+    });
+
+    if (response.ok) {
+        dispatch(del(id));
+    }
+}
+
 const initialState = {};
 
 const sliceReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case GET_SLICE:
             let newState = {};
@@ -60,6 +84,11 @@ const sliceReducer = (state = initialState, action) => {
             const newSlice = action.payload
             addState = { ...state, newSlice };
             return addState;
+        case DEL_SLICE:
+            const toDelete = action.id;
+            let updateState = { ...state };
+            delete updateState[toDelete]
+            return updateState
         default:
             return state;
     }

@@ -45,15 +45,13 @@ router.post('/', asyncHandler(async (req, res) => {
 //    return res.json(newSlice);
 // }));
 
-// router.delete('/', asyncHandler(async (req, res) => {
-//     const { name, description, addedBy } = req.body;
-//     const newSlice = await Slice.create({
-//         name,
-//         description,
-//         addedBy
-//     })
-
-//    return res.json(newSlice);
-// }));
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+    const { id } = req.body;
+    const slice = await Slice.findByPk(id)
+    if (slice) {
+        await slice.destroy();
+    }
+    return res.json(slice)
+}));
 
 module.exports = router;

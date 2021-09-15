@@ -40,7 +40,7 @@ const LoginFormPage = () => {
                         {errors.map((error, index) => (
                             <li className={logincss.errors} key={index}> {error} </li>
                         ))}
-                    </ul>   
+                    </ul>
                     <div className={logincss.loginFormGroup}>
                         <label> Username or Email
                             <input

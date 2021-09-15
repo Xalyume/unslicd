@@ -4,7 +4,7 @@ import DeleteSlice from './DeleteSlice';
 
 import delcss from './DeleteSlice.module.css'
 
-function DelSliceModal() {
+function DelSliceModal({ slice }) {
     const [showModal, setShowModal] = useState(false);
 
     const onClose = () => {
@@ -18,7 +18,7 @@ function DelSliceModal() {
             >Delete</button>
             {showModal && (
                 <Modal onClose={onClose}>
-                    <DeleteSlice onClose={onClose} />
+                    <DeleteSlice onClose={onClose} slice={slice} />
                 </Modal>
             )}
         </>
