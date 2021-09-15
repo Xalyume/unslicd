@@ -13,8 +13,28 @@
 }
 
 .cardContainer {
+    display: flex;
+    justify-content: space-between;
     margin: 10px 4%;
     padding: 15px;
     border: 1px solid black;
     border-radius: 10px;
+}
+
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+}
+
+.editDelBtn {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
+
+.innerBtnContainer {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
 }

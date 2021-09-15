@@ -25,8 +25,8 @@ const User = () => {
                     <Link to='/addstore' className={usercss.btn}>Add A New Store</Link>
                 </div>
             </div>
-            <div>
-
+            <div className={usercss.checkin}>
+                <p>Will eventually have user's checkin's in this box as cards</p>
             </div>
             <div className={usercss.links}>
                 <Link className={usercss.btn} to='/slices'>All Slices</Link>
