@@ -30,13 +30,16 @@ const SliceForm = () => {
             addedBy: sessionUser.id
         }
 
-        return await dispatch(addSlice(payload))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            });
+        let newSlice = dispatch(addSlice(payload))
+        if (newSlice) {
+           return history.push(`/`);
+        }
 
-        // let newSlice = await dispatch(addSlice(payload));
+        // let newSlice = await dispatch(addSlice(payload))
+        //     .catch(async (res) => {
+        //         const data = await res.json();
+        //         if (data && data.errors) setErrors(data.errors);
+        //     });
         // if (newSlice) {
         //     history.push(`/`);
         // }

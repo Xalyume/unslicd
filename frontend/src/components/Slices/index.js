@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getSlices } from '../../store/slice';
+import SliceCard from './SliceCard';
 
 import slicecss from './Slice.module.css';
 
@@ -13,10 +13,12 @@ const Slice = () => {
     const sessionUser = useSelector(state => state.session.user);
     const slices = useSelector(state => state.slices);
 
-    // console.log(slices)
+    const sliceArr = Object.values(slices)
+
+    console.log(slices)
 
     useEffect(() => {
-        dispatch(getSlices());
+        dispatch(getSlices())
     }, [dispatch])
 
     if (!sessionUser) return (
@@ -24,7 +26,15 @@ const Slice = () => {
     )
 
     return (
-        <h1>You've hit this spot</h1>
+        // null
+        <div className={slicecss.container}>
+            <h1>All Slices</h1>
+            <div>
+                {sliceArr.map((slice) => (
+                    <SliceCard slice={slice} />
+                ))}
+            </div>
+        </div>
     )
 }
 

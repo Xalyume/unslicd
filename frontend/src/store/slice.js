@@ -20,9 +20,6 @@ export const getSlices = () => async dispatch => {
     const response = await csrfFetch('/api/slices')
 
     const slices = await response.json();
-    console.log("GET fetch request to backend", typeof slices) // gets back object
-    console.log("GET fetch request to backend", slices) // gets back object
-    console.log(slices[0])
 
     dispatch(get(slices));
 }
@@ -53,15 +50,16 @@ export const addSlice = (sliceData) => async dispatch => {
 const initialState = {};
 
 const sliceReducer = (state = initialState, action) => {
-    let newState;
     switch (action.type) {
         case GET_SLICE:
-            newState = {...action.slices}
+            let newState = {};
+            action.slices.forEach(slice => newState[slice.id] = slice)
             return newState;
         case ADD_SLICE:
-            newState = Object.assign({}, state);
-            newState = action.payload;
-            return newState;
+            let addState = {};
+            const newSlice = action.payload
+            addState = { ...state, newSlice };
+            return addState;
         default:
             return state;
     }

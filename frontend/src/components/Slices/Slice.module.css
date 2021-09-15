@@ -1,0 +1,40 @@
+.container {
+    margin: 3% 10%;
+    padding: 2%;
+    border: 1px solid rgb(109, 109, 109);
+    background-color: #ffd574da;
+    color: #C04E44;
+    border-radius: 25px;
+}
+
+.container > h1 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 4%;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+    align-content: start;
+}
+
+.editDelBtn {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
+
+.innerBtnContainer {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
