@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getSlices } from '../../store/slice';
+import SliceCard from './SliceCard';
 
 import slicecss from './Slice.module.css';
 
@@ -18,7 +18,7 @@ const Slice = () => {
     console.log(sliceArr)
 
     useEffect(() => {
-        dispatch(getSlices());
+        dispatch(getSlices())
     }, [dispatch])
 
     if (!sessionUser) return (
@@ -26,18 +26,12 @@ const Slice = () => {
     )
 
     return (
+        // null
         <div>
             <h1>All Slices</h1>
-            <ul>
-                {sliceArr && sliceArr.map((slice) => (
-                    <li className={slicecss.list}>
-                        {slice.name}
-                        <ul>
-                            <li className={slicecss.list2}>{slice.description}</li>
-                        </ul>
-                    </li>
-                ))}
-            </ul>
+            {sliceArr.map((slice) => (
+                <SliceCard slice={slice} />
+            ))}
         </div>
     )
 }

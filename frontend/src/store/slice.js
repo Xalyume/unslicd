@@ -50,17 +50,16 @@ export const addSlice = (sliceData) => async dispatch => {
 const initialState = {};
 
 const sliceReducer = (state = initialState, action) => {
-    let newState;
     switch (action.type) {
         case GET_SLICE:
-            newState = {};
+            let newState = {};
             action.slices.forEach(slice => newState[slice.id] = slice)
             return newState;
         case ADD_SLICE:
-            newState = {};
+            let addState = {};
             const newSlice = action.payload
-            newState = {...state, newSlice};
-            return newState;
+            addState = {...state, newSlice};
+            return addState;
         default:
             return state;
     }
