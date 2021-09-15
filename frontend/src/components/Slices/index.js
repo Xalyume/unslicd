@@ -13,7 +13,9 @@ const Slice = () => {
     const sessionUser = useSelector(state => state.session.user);
     const slices = useSelector(state => state.slices);
 
-    // console.log(slices)
+    const sliceArr = Object.values(slices)
+
+    console.log(sliceArr)
 
     useEffect(() => {
         dispatch(getSlices());
@@ -24,7 +26,19 @@ const Slice = () => {
     )
 
     return (
-        <h1>You've hit this spot</h1>
+        <div>
+            <h1>All Slices</h1>
+            <ul>
+                {sliceArr && sliceArr.map((slice) => (
+                    <li className={slicecss.list}>
+                        {slice.name}
+                        <ul>
+                            <li className={slicecss.list2}>{slice.description}</li>
+                        </ul>
+                    </li>
+                ))}
+            </ul>
+        </div>
     )
 }
 

@@ -11,7 +11,7 @@ const validateSlice = [
     check('name')
         .custom(value => {
             const check = Slice.findOne({ where: { name: value } })
-            if (check) {
+            if (check !== null) {
                 return Promise.reject("Pizza Slice Already Exists!")
             }
         }),
@@ -23,7 +23,7 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json(slices);
 }))
 
-router.post('/', validateSlice, asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res) => {
     const { name, description, addedBy } = req.body;
     const newSlice = await Slice.create({
         name,
