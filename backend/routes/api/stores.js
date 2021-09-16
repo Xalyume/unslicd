@@ -13,9 +13,10 @@ router.get('/', asyncHandler(async (req, res) => {
 }))
 
 router.post('/', asyncHandler(async (req, res) => {
-    const { name, description, addedBy } = req.body;
+    const { name, location, description, addedBy } = req.body;
     const newStore = await Store.create({
         name,
+        location,
         description,
         addedBy
     })
@@ -24,13 +25,15 @@ router.post('/', asyncHandler(async (req, res) => {
 }))
 
 router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
-    const { } = req.body;
+    const { id, name, location, description } = req.body;
     const updateStore = await Store.findByPk(id)
     const newStore = await updateStore.update({
-
+        name,
+        location,
+        description
     })
 
-    return res.json();
+    return res.json(newStore);
 }));
 
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {

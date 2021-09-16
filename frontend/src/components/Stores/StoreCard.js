@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
-// import EditStoreModal from '../EditStoreModal';
-// import DelStoreModal from '../DelStoreModal/';
+import EditStoreModal from '../EditStoreModal';
+import DelStoreModal from '../DelStoreModal/';
 
 
 const StoreCard = ({ store }) => {
@@ -15,8 +15,8 @@ const StoreCard = ({ store }) => {
     if (editButtons) {
         editDelBtns = (
         <div>
-            {/* <EditStoreModal store={store} />
-            <DelStoreModal store={store} /> */}
+            <EditStoreModal store={store} />
+            <DelStoreModal store={store} />
         </div>
     )}
 
