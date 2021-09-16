@@ -15,8 +15,6 @@ const Slice = () => {
 
     const sliceArr = Object.values(slices)
 
-    console.log(slices)
-
     useEffect(() => {
         dispatch(getSlices())
     }, [dispatch])

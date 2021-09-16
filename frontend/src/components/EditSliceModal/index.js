@@ -4,8 +4,10 @@ import EditSlice from './EditSlice'
 
 import edit from './EditSliceModal.module.css'
 
-function EditSliceModal() {
+function EditSliceModal({ slice }) {
   const [showModal, setShowModal] = useState(false);
+
+  const onClose = () => setShowModal(false)
 
   return (
     <>
@@ -13,8 +15,8 @@ function EditSliceModal() {
         className={edit.btn}
       >Edit</button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <EditSlice />
+        <Modal onClose={onClose}>
+          <EditSlice onClose={onClose} slice={slice} />
         </Modal>
       )}
     </>

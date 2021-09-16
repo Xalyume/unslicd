@@ -16,8 +16,8 @@ const SliceCard = ({ slice }) => {
     if (sessionUser.id === slice?.addedBy) {
         editDelBtns = (
             <div className={slicecss.innerBtnContainer}>
-                <EditSliceModal />
-                <DelSliceModal />
+                <EditSliceModal slice={slice} />
+                <DelSliceModal slice={slice} />
             </div>
         )
     }
