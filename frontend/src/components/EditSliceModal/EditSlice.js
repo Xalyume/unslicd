@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { editSlice } from '../../store/slice';
 
 import edit from './EditSliceModal.module.css'
 
@@ -9,11 +10,24 @@ const EditSlice = ({ onClose, slice }) => {
     const [name, setName] = useState(slice.name)
     const [description, setDescription] = useState(slice.description)
 
+    const onEdit = (e) => {
+        e.preventDefault();
+
+        const payload = {
+            id: slice.id,
+            name,
+            description
+        }
+
+        dispatch(editSlice(payload))
+        onClose()
+    }
+
     return (
         <div>
             <div>
                 <form
-                // onSubmit={onSubmit}
+                    onSubmit={onEdit}
                 >
                     {/* <ul>
                         {errors.map((error, index) => (
