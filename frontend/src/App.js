@@ -9,6 +9,7 @@ import HomePage from './components/HomePage'
 import SliceForm from './components/SliceForm'
 import StoreForm from './components/StoreForm'
 import Slice from './components/Slices';
+import Store from './components/Stores'
 
 import * as sessionActions from "./store/session";
 
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/slices">
             <Slice />
+          </Route>
+          <Route path="/stores">
+            <Store />
           </Route>
         </Switch>
       )}

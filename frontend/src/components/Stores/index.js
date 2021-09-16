@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getStores } from '../../store/slice';
+import { getStores } from '../../store/store';
 import StoreCard from './StoreCard';
 
 
@@ -24,7 +24,7 @@ const Slice = () => {
 
     return (
         <div>
-            <h1>All Slices</h1>
+            <h1>All Current Stores</h1>
             <div>
                 {storeArr.map((store) => (
                     <StoreCard store={store} />
