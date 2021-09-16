@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { editSlice } from '../../store/slice';
 
-import edit from './EditSliceModal.module.css'
+// import edit from './EditSliceModal.module.css'
 
 const EditSlice = ({ onClose, slice }) => {
     const dispatch = useDispatch();
