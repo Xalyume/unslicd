@@ -7,15 +7,17 @@ const { Store } = require('../../db/models');
 
 const router = express.Router();
 
-outer.get('/', asyncHandler(async (req, res) => {
+router.get('/', asyncHandler(async (req, res) => {
     const stores = await Store.findAll();
     return res.json(stores);
 }))
 
 router.post('/', asyncHandler(async (req, res) => {
-    const { } = req.body;
+    const { name, description, addedBy } = req.body;
     const newStore = await Store.create({
-
+        name,
+        description,
+        addedBy
     })
 
     return res.json(newStore);

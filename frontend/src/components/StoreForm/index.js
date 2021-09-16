@@ -1,18 +1,36 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Redirect, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addStore } from '../../store/store'
 
 const StoreForm = () => {
     const sessionUser = useSelector(state => state.session.user);
+    const history = useHistory();
+    const dispatch = useDispatch();
 
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');
-    const [desc, setDesc] = useState('');
+    const [description, setDescription] = useState('');
+    const [errors, setErrors] = useState([]);
 
     const onSubmit = (e) => {
         e.preventDefault();
 
+        setErrors([]);
+
+        const payload = {
+            name,
+            location,
+            description,
+            addedBy: sessionUser.id
+        }
+
+
+        let newSlice = dispatch(addStore(payload))
+        if (newSlice) {
+            return history.push(`/`);
+        }
     }
 
     if (!sessionUser) return (
@@ -46,12 +64,12 @@ const StoreForm = () => {
                         <label>Description:</label>
                         <input
                             type="text"
-                            value={desc}
-                            onChange={(e) => setDesc(e.target.value)}
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
                     <div>
-                        <button type="submit">Add A Slice</button>
+                        <button type="submit">Add Store</button>
                         <Link to='/'>Cancel</Link>
                     </div>
                 </form>

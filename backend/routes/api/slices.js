@@ -42,7 +42,7 @@ router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
         description,
     })
 
-    return res.json();
+    return res.json(newSlice);
 }));
 
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
