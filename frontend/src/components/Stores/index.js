@@ -1,0 +1,37 @@
+import React, { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getStores } from '../../store/slice';
+import StoreCard from './StoreCard';
+
+
+const Slice = () => {
+    const dispatch = useDispatch();
+
+    const sessionUser = useSelector(state => state.session.user);
+    const stores = useSelector(state => state.stores);
+
+    const storeArr = Object.values(stores)
+
+    useEffect(() => {
+        dispatch(getStores())
+    }, [dispatch])
+
+    if (!sessionUser) return (
+        <Redirect to='/login' />
+    )
+
+    return (
+        <div>
+            <h1>All Slices</h1>
+            <div>
+                {storeArr.map((store) => (
+                    <StoreCard store={store} />
+                ))}
+            </div>
+        </div>
+    )
+}
+
+export default Slice

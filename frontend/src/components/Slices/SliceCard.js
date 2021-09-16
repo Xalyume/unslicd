@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+
 import { useSelector } from 'react-redux';
 
 import EditSliceModal from '../EditSliceModal';
@@ -8,19 +8,24 @@ import DelSliceModal from '../DelSliceModal/';
 import slicecss from './Slice.module.css';
 
 const SliceCard = ({ slice }) => {
-
     const sessionUser = useSelector(state => state.session.user);
+    const [editButtons, setEditButtons] = useState(false);
 
     let editDelBtns;
 
-    if (sessionUser.id === slice?.addedBy) {
+    if (editButtons) {
         editDelBtns = (
-            <div className={slicecss.innerBtnContainer}>
-                <EditSliceModal slice={slice} />
-                <DelSliceModal slice={slice} />
-            </div>
-        )
-    }
+        <div className={slicecss.innerBtnContainer}>
+            <EditSliceModal slice={slice} />
+            <DelSliceModal slice={slice} />
+        </div>
+    )}
+
+    useEffect(() => {
+        if (sessionUser.id === slice?.addedBy) {
+            setEditButtons(true)
+        }
+    }, [slice, sessionUser.id])
 
     return (
         <div className={slicecss.cardContainer}>

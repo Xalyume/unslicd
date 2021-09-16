@@ -56,8 +56,7 @@ export const addSlice = (sliceData) => async dispatch => {
     }
 }
 
-export const deleteSlice = (slice) => async dispatch => {
-    const id = slice
+export const deleteSlice = (id) => async dispatch => {
 
     const response = await csrfFetch(`/api/slices/${id}`, {
         method: "DELETE",
