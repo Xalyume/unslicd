@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { getCheckIn } from '../../store/checkin';
 
 import CheckInModal from '../CheckInModal';
+import CheckInCard from './CheckInCard';
 
 import usercss from './User.module.css';
 
 const User = () => {
+    const dispatch = useDispatch();
+
     const sessionUser = useSelector(state => state.session.user);
+    const userCheckins = useSelector(state => state.checkIns)
+
+    const userArr = Object.values(userCheckins)
 
     const date = sessionUser.createdAt.split('T');
     const membership = date[0].split('-');
+
+    console.log(userArr)
+
+    useEffect(() => {
+        dispatch(getCheckIn())
+    }, [dispatch])
 
     return (
         <div className={usercss.container}>
@@ -30,7 +44,9 @@ const User = () => {
                 </div>
             </div>
             <div className={usercss.checkin}>
-                <p>Will eventually have user's checkin's in this box as cards</p>
+                {userArr.map((checkin) => (
+                    <CheckInCard checkin={checkin} />
+                ))}
             </div>
             <div className={usercss.links}>
                 <Link className={usercss.btn} to='/slices'>All Slices</Link>

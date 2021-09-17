@@ -19,6 +19,14 @@ const del = id => ({
     id
 })
 
+export const getCheckIn = () => async dispatch => {
+    const response = await csrfFetch('/api/checkins')
+
+    const checkIns = await response.json();
+
+    dispatch(get(checkIns));
+}
+
 
 export const addCheckIn = (checkInData) => async dispatch => {
     const { storeId, userId, sliceId, review, rating, image } = checkInData

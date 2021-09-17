@@ -1,14 +1,18 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
+
 const { handleValidationErrors } = require('../../utils/validation');
 
-const { CheckIn } = require('../../db/models');
+const { CheckIn, User, Slice, Store } = require('../../db/models');
 
 const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
-    const checkIns = await CheckIn.findAll();
+    const checkIns = await CheckIn.findAll({
+        include: [User, Slice, Store]
+    });
+    
     return res.json(checkIns);
 }))
 

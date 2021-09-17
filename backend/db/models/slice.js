@@ -10,6 +10,9 @@ module.exports = (sequelize, DataTypes) => {
 
     // Slice belongsTo one User (added by One User)
     Slice.belongsTo(models.User, { foreignKey: 'addedBy' })
+
+    // Slice hasMany CheckIns
+    Slice.belongsTo(models.CheckIn, { foreignKey: 'sliceId' })
   };
   return Slice;
 };
