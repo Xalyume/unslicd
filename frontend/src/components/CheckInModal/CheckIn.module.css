@@ -1,0 +1,26 @@
+.modalBtn {
+    text-decoration: none;
+    background-color: transparent;
+    color: white;
+    width: 100%;
+    text-align: start;
+    font-size: large;
+}
+
+.container {
+    margin: 10% 10%;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: transparent;
+    margin: 10px 5px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+.redirect {
+    color: black;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -8,10 +8,6 @@ import usercss from './User.module.css';
 
 const User = () => {
     const sessionUser = useSelector(state => state.session.user);
-
-    const [showModal, setShowModal] = useState(false);
-
-    const onClose = () => setShowModal(false)
 
     const date = sessionUser.createdAt.split('T');
     const membership = date[0].split('-');

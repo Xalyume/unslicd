@@ -20,6 +20,32 @@ const del = id => ({
 })
 
 
+export const addCheckIn = (checkInData) => async dispatch => {
+    const { storeId, userId, sliceId, review, rating, image } = checkInData
+
+    // console.log("sliceData from form", sliceData)
+    const response = await csrfFetch('/api/checkins', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            storeId,
+            userId,
+            sliceId,
+            review,
+            rating,
+            image
+        })
+    });
+
+    if (response.ok) {
+        const newCheckIn = await response.json();
+        dispatch(add(newCheckIn));
+        return newCheckIn;
+    }
+}
+
 const initialState = {};
 
 const checkInReducer = (state = initialState, action) => {

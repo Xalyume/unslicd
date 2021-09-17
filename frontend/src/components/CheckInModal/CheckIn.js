@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getSlices } from '../../store/slice';
 import { getStores } from '../../store/store';
+import { addCheckIn } from '../../store/checkin';
 
-// import edit from './EditSliceModal.module.css'
+import checkIn from './CheckIn.module.css'
 
 const CheckIn = ({ onClose }) => {
     const dispatch = useDispatch();
@@ -26,14 +28,16 @@ const CheckIn = ({ onClose }) => {
         e.preventDefault();
 
         const payload = {
-            slice,
-            store,
+            storeId: parseInt(store, 10),
+            userId: sessionUser.id,
+            sliceId: parseInt(slice, 10),
             review,
             rating,
+            image
         }
 
-        console.log(payload)
-        // onClose()
+        dispatch(addCheckIn(payload))
+        onClose()
     }
 
     useEffect(() => {
@@ -42,7 +46,7 @@ const CheckIn = ({ onClose }) => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className={checkIn.container}>
             <div>
                 <form
                     onSubmit={onCheckIn}
@@ -57,6 +61,10 @@ const CheckIn = ({ onClose }) => {
                         <select name="slices"
                             onChange={(e) => setSlice(e.target.value)}
                         >
+                            <option value={null}
+                                disabled="disabled"
+                                selected
+                            >Pick a Slice.</option>
                             {sliceArr.map((slice) => (
                                 <option
                                     value={slice.id}
@@ -65,11 +73,20 @@ const CheckIn = ({ onClose }) => {
                             ))}
                         </select>
                     </div>
+                    <p>If you don't see your slice, you can
+                        <Link
+                            className={checkIn.redirect}
+                            to='/addslice'> add it here</Link>
+                    </p>
                     <div>
                         <label>Store:</label>
                         <select name="stores"
                             onChange={(e) => setStore(e.target.value)}
                         >
+                            <option value={null}
+                                disabled="disabled"
+                                selected
+                            >Pick a Store.</option>
                             {storeArr.map((store) => (
                                 <option
                                     value={store.id}
@@ -78,6 +95,11 @@ const CheckIn = ({ onClose }) => {
                             ))}
                         </select>
                     </div>
+                    <p>If you don't see your store, you can
+                        <Link
+                            className={checkIn.redirect}
+                            to='/addstore'> add it here</Link>
+                    </p>
                     <div>
                         <label>Review:</label>
                         <textarea
@@ -92,7 +114,7 @@ const CheckIn = ({ onClose }) => {
                         <select name="rating"
                             onChange={(e) => setRating(e.target.value)}
                         >
-                            <option value={1}>1</option>
+                            <option value={1} selected>1</option>
                             <option value={2}>2</option>
                             <option value={3}>3</option>
                             <option value={4}>4</option>
@@ -108,8 +130,8 @@ const CheckIn = ({ onClose }) => {
                         />
                     </div>
                     <div >
-                        <button type="submit">Check-In</button>
-                        <button onClick={onClose}>Cancel</button>
+                        <button className={checkIn.btn} type="submit">Check-In</button>
+                        <button className={checkIn.btn} onClick={onClose}>Cancel</button>
                     </div>
                 </form>
             </div >
