@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import sliceReducer from "./slice";
 import storeReducer from "./store";
+import checkInReducer from "./checkin";
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   slices: sliceReducer,
   stores: storeReducer,
+  checkIns: checkInReducer,
 });
 
 let enhancer;

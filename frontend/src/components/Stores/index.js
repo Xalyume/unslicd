@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getStores } from '../../store/store';
 import StoreCard from './StoreCard';
 
+import storecss from './Store.module.css'
 
 const Slice = () => {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Slice = () => {
     )
 
     return (
-        <div>
+        <div className={storecss.container}>
             <h1>All Current Stores</h1>
             <div>
                 {storeArr.map((store) => (

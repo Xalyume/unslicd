@@ -6,8 +6,14 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     addedBy: DataTypes.INTEGER
   }, {});
-  Store.associate = function(models) {
+  Store.associate = function (models) {
     // associations can be defined here
+
+    //Store belongsTo one User
+    Store.belongsTo(models.User, { foreignKey: 'addedBy' })
+
+    //Store hasMany CheckIns
+    Store.hasMany(models.CheckIn, { foreignKey: "storeId" })
   };
   return Store;
 };

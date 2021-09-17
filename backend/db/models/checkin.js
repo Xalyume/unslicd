@@ -10,6 +10,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   CheckIn.associate = function(models) {
     // associations can be defined here
+
+    // CheckIn belongsTo one User, Store, Slice
+    CheckIn.belongsTo(models.User, {foreignKey: "userId"})
+    CheckIn.belongsTo(models.Store, {foreignKey: "storeId"})
+    CheckIn.belongsTo(models.Slice, {foreignKey: "sliceId"})
   };
   return CheckIn;
 };
