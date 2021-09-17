@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 
 // import DelSliceModal from '../DelSliceModal/';
 
-import checkin from './User.module.css';
+import checkincss from './User.module.css';
 
-const SliceCard = ({ checkIn }) => {
+const SliceCard = ({ checkin }) => {
     const sessionUser = useSelector(state => state.session.user);
     const [deleteBtn, setDeleteBtn] = useState(false);
 
@@ -14,25 +14,33 @@ const SliceCard = ({ checkIn }) => {
 
     if (deleteBtn) {
         delBtns = (
-        <div className={checkin.innerBtnContainer}>
-            {/* <DelSliceModal checkIn={checkIn} /> */}
-        </div>
-    )}
+            <div className={checkin.innerBtnContainer}>
+                {/* <DelSliceModal checkIn={checkIn} /> */}
+            </div>
+        )
+    }
+
+    console.log(checkin)
 
     useEffect(() => {
-        if (sessionUser.id === checkIn?.userId) {
+        if (sessionUser.id === checkin?.userId) {
             setDeleteBtn(true)
         }
-    }, [checkIn, sessionUser.id])
+    }, [checkin, sessionUser.id])
 
     return (
-        <div className={checkin.cardContainer}>
-            <div className={checkin.cardInfo}>
-                <h3>{checkIn?.User.username}</h3>
-                <p>{checkIn?.description}</p>
+        <div className={checkincss.cardContainer}>
+            <div className={checkincss.cardInfo}>
+                <h3>Check</h3>
+                <p>{checkin?.User?.username}</p>
+                <p>{checkin?.Slouse?.name}</p>
+                <p>{checkin?.Store?.name}</p>
+                <p>{checkin?.review}</p>
+                <p>{checkin?.rating}</p>
+                <p>{checkin?.createdAt}</p>
             </div>
-            <div className={checkin.delBtns}>
-                {checkIn && delBtns}
+            <div className={checkincss.delBtns}>
+                {checkin && delBtns}
             </div>
         </div>
     )

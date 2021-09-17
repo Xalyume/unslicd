@@ -20,8 +20,6 @@ const User = () => {
     const date = sessionUser.createdAt.split('T');
     const membership = date[0].split('-');
 
-    console.log(userArr)
-
     useEffect(() => {
         dispatch(getCheckIn())
     }, [dispatch])
@@ -45,7 +43,7 @@ const User = () => {
             </div>
             <div className={usercss.checkin}>
                 {userArr.map((checkin) => (
-                    <CheckInCard checkin={checkin} />
+                    <CheckInCard key={checkin.id} checkin={checkin} />
                 ))}
             </div>
             <div className={usercss.links}>
