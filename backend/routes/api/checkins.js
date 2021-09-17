@@ -10,22 +10,34 @@ const router = express.Router();
 
 router.get('/', asyncHandler(async (req, res) => {
     const checkIns = await CheckIn.findAll({
-        include: [User, Slice, Store]
+        include: [User, Slice, Store],
+        order: [["createdAt", "DESC"]],
     });
 
     return res.json(checkIns);
 }))
 
 router.post('/', asyncHandler(async (req, res) => {
-    const { storeId, userId, sliceId, review, rating, image } = req.body;
-    await CheckIn.create({
-        storeId,
-        userId,
-        sliceId,
-        review,
-        rating,
-        image
-    })
+    let { storeId, userId, sliceId, review, rating, image } = req.body;
+
+    if (image.length <= 0) {
+        const checkIn = await CheckIn.create({
+            storeId,
+            userId,
+            sliceId,
+            review,
+            rating,
+        })
+    } else {
+        const checkInWithImage = await CheckIn.create({
+            storeId,
+            userId,
+            sliceId,
+            review,
+            rating,
+            image
+        })
+    }
 
     const checkIns = await CheckIn.findAll({
         where: {
@@ -45,7 +57,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     if (checkin) {
         await checkin.destroy();
     }
-    return res.json(slice)
+    return res.json(checkin)
 }))
 
 module.exports = router;

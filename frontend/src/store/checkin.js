@@ -54,6 +54,23 @@ export const addCheckIn = (checkInData) => async dispatch => {
     }
 }
 
+export const deleteCheckin = (id) => async dispatch => {
+
+    const response = await csrfFetch(`/api/checkins/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id
+        })
+    });
+
+    if (response.ok) {
+        dispatch(del(id));
+    }
+}
+
 const initialState = {};
 
 const checkInReducer = (state = initialState, action) => {
@@ -65,7 +82,7 @@ const checkInReducer = (state = initialState, action) => {
             return newState;
         case ADD_CHECK:
             newState = Object.assign({}, state)
-            newState[action.checkIn.id] = action.checkIn
+            newState[action.checkIn.id] = {...action.checkIn}
             return newState;
         case DEL_CHECK:
             newState = Object.assign({}, state)

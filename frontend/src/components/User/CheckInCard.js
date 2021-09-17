@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
-// import DelSliceModal from '../DelSliceModal/';
+import DelCheckIn from '../DelCheckInModal/';
 
 import checkincss from './User.module.css';
 
@@ -15,12 +15,13 @@ const SliceCard = ({ checkin }) => {
     if (deleteBtn) {
         delBtns = (
             <div className={checkin.innerBtnContainer}>
-                {/* <DelSliceModal checkIn={checkIn} /> */}
+                <DelCheckIn checkin={checkin} />
             </div>
         )
     }
 
-    console.log(checkin)
+    const date = checkin.createdAt.split('T');
+    const checkinDate = date[0].split('-');
 
     useEffect(() => {
         if (sessionUser.id === checkin?.userId) {
@@ -31,17 +32,27 @@ const SliceCard = ({ checkin }) => {
     return (
         <div className={checkincss.cardContainer}>
             <div className={checkincss.cardInfo}>
-                <h3>Check</h3>
-                <p>{checkin?.User?.username}</p>
-                <p>{checkin?.Slouse?.name}</p>
-                <p>{checkin?.Store?.name}</p>
-                <p>{checkin?.review}</p>
-                <p>{checkin?.rating}</p>
-                <p>{checkin?.createdAt}</p>
-            </div>
+                <p className={checkincss.checkInText}>{checkin?.User?.username}
+                    <span> had a </span>
+                    <span>{checkin?.Slouse?.name}</span>
+                    <span> at </span>
+                    <span>{checkin?.Store?.name}</span>
+                    <span> on </span>
+                    <span>{checkinDate[1]}/</span>
+                    <span>{checkinDate[2]}/</span>
+                    <span>{checkinDate[0]}</span>
+                </p>
+                <p className={checkincss.review}>{checkin?.review}</p>
+                <p> Review: {checkin?.rating}/5</p>
             <div className={checkincss.delBtns}>
                 {checkin && delBtns}
             </div>
+            </div>
+            <img
+                className={checkincss.checkinPic}
+                src={`${checkin?.image}`}
+                alt="checkin_picture"
+            />
         </div>
     )
 }

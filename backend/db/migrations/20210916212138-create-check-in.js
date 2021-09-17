@@ -32,7 +32,6 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       image: {
-        allowNull: false,
         type: Sequelize.TEXT,
         defaultValue: "https://image.freepik.com/free-vector/pizza-illustration_8319-36.jpg"
       },
