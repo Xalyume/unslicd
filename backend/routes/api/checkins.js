@@ -12,13 +12,13 @@ router.get('/', asyncHandler(async (req, res) => {
     const checkIns = await CheckIn.findAll({
         include: [User, Slice, Store]
     });
-    
+
     return res.json(checkIns);
 }))
 
 router.post('/', asyncHandler(async (req, res) => {
     const { storeId, userId, sliceId, review, rating, image } = req.body;
-    const newCheckIn = await CheckIn.create({
+    await CheckIn.create({
         storeId,
         userId,
         sliceId,
@@ -26,6 +26,15 @@ router.post('/', asyncHandler(async (req, res) => {
         rating,
         image
     })
+
+    const checkIns = await CheckIn.findAll({
+        where: {
+            userId
+        },
+        include: [User, Slice, Store]
+    });
+
+    const newCheckIn = checkIns[checkIns.length - 1]
 
     return res.json(newCheckIn);
 }))
