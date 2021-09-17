@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
+import CheckInModal from '../CheckInModal';
 
 import usercss from './User.module.css';
 
 const User = () => {
     const sessionUser = useSelector(state => state.session.user);
+
+    const [showModal, setShowModal] = useState(false);
+
+    const onClose = () => setShowModal(false)
 
     const date = sessionUser.createdAt.split('T');
     const membership = date[0].split('-');
@@ -20,7 +26,9 @@ const User = () => {
                     <p>Member Since: {membership[1]}/{membership[2]}/{membership[0]}</p>
                 </div>
                 <div className={usercss.btnGroup}>
-                    <Link to='/checkin' className={usercss.btn}>Check In</Link>
+                    <div className={usercss.btn}>
+                        <CheckInModal />
+                    </div>
                     <Link to='/addslice' className={usercss.btn}>Add A New Slice</Link>
                     <Link to='/addstore' className={usercss.btn}>Add A New Store</Link>
                 </div>

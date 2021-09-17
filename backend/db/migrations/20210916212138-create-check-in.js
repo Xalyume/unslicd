@@ -9,22 +9,32 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       storeId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: "Stores" }
       },
       userId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: "Users" }
       },
       sliceId: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: "Slices" }
       },
       review: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       rating: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       image: {
-        type: Sequelize.TEXT
+        allowNull: false,
+        type: Sequelize.TEXT,
+        defaultValue: "https://image.freepik.com/free-vector/pizza-illustration_8319-36.jpg"
       },
       createdAt: {
         allowNull: false,

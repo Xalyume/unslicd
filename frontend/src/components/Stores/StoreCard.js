@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import EditStoreModal from '../EditStoreModal';
 import DelStoreModal from '../DelStoreModal/';
 
+import storecss from './Store.module.css'
 
 const StoreCard = ({ store }) => {
     const sessionUser = useSelector(state => state.session.user);
@@ -27,13 +28,13 @@ const StoreCard = ({ store }) => {
     }, [store, sessionUser.id])
 
     return (
-        <div>
-            <div>
+        <div className={storecss.cardContainer}>
+            <div className={storecss.cardInfo}>
                 <h3>{store?.name}</h3>
                 <p>{store?.location}</p>
                 <p>{store?.description}</p>
             </div>
-            <div>
+            <div className={storecss.editDelBtns}>
                 {store && editDelBtns}
             </div>
         </div>
