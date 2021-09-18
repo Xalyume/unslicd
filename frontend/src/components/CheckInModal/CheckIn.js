@@ -26,7 +26,7 @@ const CheckIn = ({ onClose }) => {
 
     const onCheckIn = (e) => {
         e.preventDefault();
-        
+
         const payload = {
             storeId: parseInt(store, 10),
             userId: sessionUser.id,

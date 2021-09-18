@@ -21,7 +21,7 @@ router.post('/', asyncHandler(async (req, res) => {
     let { storeId, userId, sliceId, review, rating, image } = req.body;
 
     if (image.length <= 0) {
-        const checkIn = await CheckIn.create({
+        await CheckIn.create({
             storeId,
             userId,
             sliceId,
@@ -29,7 +29,7 @@ router.post('/', asyncHandler(async (req, res) => {
             rating,
         })
     } else {
-        const checkInWithImage = await CheckIn.create({
+        await CheckIn.create({
             storeId,
             userId,
             sliceId,
@@ -39,6 +39,7 @@ router.post('/', asyncHandler(async (req, res) => {
         })
     }
 
+
     const checkIns = await CheckIn.findAll({
         where: {
             userId
@@ -46,7 +47,11 @@ router.post('/', asyncHandler(async (req, res) => {
         include: [User, Slice, Store]
     });
 
-    const newCheckIn = checkIns[checkIns.length - 1]
+    console.log("entries", checkIns)
+
+    const newCheckIn = checkIns[0]
+
+    console.log("last entry", newCheckIn)
 
     return res.json(newCheckIn);
 }))

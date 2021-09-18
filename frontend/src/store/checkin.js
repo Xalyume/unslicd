@@ -49,6 +49,7 @@ export const addCheckIn = (checkInData) => async dispatch => {
 
     if (response.ok) {
         const newCheckIn = await response.json();
+        console.log("What is response.json", newCheckIn)
         dispatch(add(newCheckIn));
         return newCheckIn;
     }
@@ -82,7 +83,9 @@ const checkInReducer = (state = initialState, action) => {
             return newState;
         case ADD_CHECK:
             newState = Object.assign({}, state)
+            // console.log("action.checkIn passed from backend", action.checkIn)
             newState[action.checkIn.id] = {...action.checkIn}
+            // console.log("newState after add checkin", newState)
             return newState;
         case DEL_CHECK:
             newState = Object.assign({}, state)
