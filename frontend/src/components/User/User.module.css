@@ -58,6 +58,8 @@
 }
 
 .checkin {
+    display: flex;
+    flex-direction: column-reverse;
     border: 1px solid black;
     padding: 5% 5%;
     width: 65%;

@@ -36,7 +36,6 @@ export const getSlices = () => async dispatch => {
 export const addSlice = (sliceData) => async dispatch => {
     const { name, description, addedBy } = sliceData
 
-    // console.log("sliceData from form", sliceData)
     const response = await csrfFetch('/api/slices', {
         method: "POST",
         headers: {

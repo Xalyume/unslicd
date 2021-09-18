@@ -47,12 +47,7 @@ router.post('/', asyncHandler(async (req, res) => {
         include: [User, Slice, Store]
     });
 
-    console.log("entries", checkIns)
-
     const newCheckIn = checkIns[0]
-
-    console.log("last entry", newCheckIn)
-
     return res.json(newCheckIn);
 }))
 
