@@ -30,18 +30,15 @@ const SliceForm = () => {
             addedBy: sessionUser.id
         }
 
-        let newSlice = dispatch(addSlice(payload))
-        if (newSlice) {
-           return history.push(`/`);
-        }
+        return dispatch(addSlice(payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+                else return history.push('/')
+            })
 
-        // let newSlice = await dispatch(addSlice(payload))
-        //     .catch(async (res) => {
-        //         const data = await res.json();
-        //         if (data && data.errors) setErrors(data.errors);
-        //     });
         // if (newSlice) {
-        //     history.push(`/`);
+        //     return history.push(`/`);
         // }
     }
 
@@ -56,7 +53,8 @@ const SliceForm = () => {
                     >
                         <ul>
                             {errors.map((error, index) => (
-                                <li className={slicecss.errors} key={index}> {error} </li>
+                                <li className={slicecss.errors} key={index}>
+                                    {error} </li>
                             ))}
                         </ul>
                         <div className={slicecss.formItem}>
@@ -66,7 +64,6 @@ const SliceForm = () => {
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 className={`${slicecss.formInput} ${slicecss.text}`}
-                                required
                             />
 
                         </div>
@@ -77,7 +74,6 @@ const SliceForm = () => {
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 className={`${slicecss.textbox} ${slicecss.formInput}`}
-                                required
                             />
                         </div>
                         <div className={slicecss.btns}>

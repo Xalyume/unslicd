@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addStore } from '../../store/store'
 
+import storecss from './StoreForm.module.css'
+
 const StoreForm = () => {
     const sessionUser = useSelector(state => state.session.user);
     const history = useHistory();
@@ -26,11 +28,17 @@ const StoreForm = () => {
             addedBy: sessionUser.id
         }
 
+        return dispatch(addStore(payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+                else return history.push('/')
+            })
 
-        let newSlice = dispatch(addStore(payload))
-        if (newSlice) {
-            return history.push(`/`);
-        }
+        // let newSlice = dispatch(addStore(payload))
+        // if (newSlice) {
+        //     return history.push(`/`);
+        // }
     }
 
     if (!sessionUser) return (
@@ -39,11 +47,18 @@ const StoreForm = () => {
 
     return (
         <>
-            <div>
+            <div className={storecss.container}>
                 <h1>Add A New Store!</h1>
-                <form
+                <form className={storecss.form}
                     onSubmit={onSubmit}
                 >
+                    <ul>
+                        {errors.map((error, index) => (
+                            <li className={storecss.errors}
+                                key={index}>
+                                {error} </li>
+                        ))}
+                    </ul>
                     <div>
                         <label>Store Name:</label>
                         <input

@@ -11,18 +11,19 @@ import checkIn from './CheckIn.module.css'
 const CheckIn = ({ onClose }) => {
     const dispatch = useDispatch();
 
-    const [slice, setSlice] = useState('')
-    const [store, setStore] = useState('')
-    const [review, setReview] = useState('')
-    const [rating, setRating] = useState(1)
-    const [image, setImage] = useState('')
+    const [slice, setSlice] = useState('');
+    const [store, setStore] = useState('');
+    const [review, setReview] = useState('');
+    const [rating, setRating] = useState(1);
+    const [image, setImage] = useState('');
+    const [errors, setErrors] = useState([]);
 
     const sessionUser = useSelector(state => state.session.user);
     const slices = useSelector(state => state.slices);
     const stores = useSelector(state => state.stores);
 
-    const sliceArr = Object.values(slices)
-    const storeArr = Object.values(stores)
+    const sliceArr = Object.values(slices);
+    const storeArr = Object.values(stores);
 
     const onCheckIn = (e) => {
         e.preventDefault();
@@ -36,8 +37,15 @@ const CheckIn = ({ onClose }) => {
             image
         }
 
-        dispatch(addCheckIn(payload))
-        onClose()
+        setErrors([])
+
+        return dispatch(addCheckIn(payload))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+                else onClose()
+            })
+
     }
 
     useEffect(() => {
@@ -51,11 +59,13 @@ const CheckIn = ({ onClose }) => {
                 <form
                     onSubmit={onCheckIn}
                 >
-                    {/* <ul>
+                    <ul>
                         {errors.map((error, index) => (
-                            <li key={index}> {error} </li>
+                            <li
+                                className={checkIn.errors}
+                                key={index}> {error} </li>
                         ))}
-                    </ul> */}
+                    </ul>
                     <div>
                         <label>Slice:</label>
                         <select name="slices"
@@ -106,7 +116,6 @@ const CheckIn = ({ onClose }) => {
                             type="text"
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
-                            d required
                         />
                     </div>
                     <div>

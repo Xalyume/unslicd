@@ -9,12 +9,20 @@ const router = express.Router();
 
 const validateSlice = [
     check('name')
+        .notEmpty()
+        .withMessage('Please provide a valid slice name.'),
+    check('name')
         .custom(value => {
-            const check = Slice.findOne({ where: { name: value } })
-            if (check !== null) {
-                return Promise.reject("Pizza Slice Already Exists!")
-            }
+            return Slice.findOne({ where: { name: value } })
+                .then((slice) => {
+                    if (slice) {
+                        return Promise.reject('Pizza slice already exists.')
+                    }
+                })
         }),
+    check('description')
+        .notEmpty()
+        .withMessage('Please provide a valid slice description.'),
     handleValidationErrors,
 ]
 
@@ -23,7 +31,7 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json(slices);
 }))
 
-router.post('/', asyncHandler(async (req, res) => {
+router.post('/', validateSlice, asyncHandler(async (req, res) => {
     const { name, description, addedBy } = req.body;
     const newSlice = await Slice.create({
         name,

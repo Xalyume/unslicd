@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    margin: 8% 27%;
+    justify-content: center;
+}
+
+.pic {
+    display: flex;
+    height: auto;
+    width: 100%;
+    background-image: url("https://www.seriouseats.com/thmb/f6d7g-Q6dXQQSE8x0XU7dxnj9nk=/1500x1125/filters:fill(auto,1)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__images__2015__01__20150127-san-francisco-pizza-by-the-slice-pizza-shop-29d0db5cbaa748038a00ebde8cf543f7.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 36px;
+    border-bottom-left-radius: 36px;
+    opacity: .8;
+}
+
+.formContainer {
+    background-color: #d7a63254;
+    padding: 25px;
+    border-top-right-radius: 36px;
+    border-bottom-right-radius: 36px;
+}
+
+.formContainer > h1 {
+    text-align: center;
+    margin: 5% 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.form > * {
+    margin: 25px 0;
+}
+
+.formItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.formItem > * {
+    align-self: flex-start;
+}
+
+.formInput {
+    border: 1px solid rgba(0, 0, 0, 0.418);
+}
+
+.text {
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.textbox {
+    resize: none;
+    height: 100px;
+    width: 350px;
+    border-radius: 5px;
+}
+
+
+.btns > * {
+    margin: 0 5px;
+    padding: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: #C04E44;
+    color: white;
+    border: 3px solid #C04E44;
+    border-radius: 6px;
+}
+
+.errors {
+    color: red;
+}

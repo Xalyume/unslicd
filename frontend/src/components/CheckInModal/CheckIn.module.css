@@ -20,7 +20,10 @@
     border-radius: 5px;
 }
 
-
 .redirect {
     color: black;
+}
+
+.errors {
+    color: red;
 }
