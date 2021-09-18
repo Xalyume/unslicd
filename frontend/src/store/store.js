@@ -37,7 +37,6 @@ export const getStores = () => async dispatch => {
 export const addStore = (storeData) => async dispatch => {
     const { name, location, description, addedBy } = storeData
 
-    console.log("storeData from form", storeData)
     const response = await csrfFetch('/api/stores', {
         method: "POST",
         headers: {

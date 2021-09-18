@@ -49,8 +49,26 @@ export const addCheckIn = (checkInData) => async dispatch => {
 
     if (response.ok) {
         const newCheckIn = await response.json();
+        console.log("What is response.json", newCheckIn)
         dispatch(add(newCheckIn));
         return newCheckIn;
+    }
+}
+
+export const deleteCheckin = (id) => async dispatch => {
+
+    const response = await csrfFetch(`/api/checkins/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id
+        })
+    });
+
+    if (response.ok) {
+        dispatch(del(id));
     }
 }
 
@@ -65,7 +83,9 @@ const checkInReducer = (state = initialState, action) => {
             return newState;
         case ADD_CHECK:
             newState = Object.assign({}, state)
-            newState[action.checkIn.id] = action.checkIn
+            // console.log("action.checkIn passed from backend", action.checkIn)
+            newState[action.checkIn.id] = {...action.checkIn}
+            // console.log("newState after add checkin", newState)
             return newState;
         case DEL_CHECK:
             newState = Object.assign({}, state)
