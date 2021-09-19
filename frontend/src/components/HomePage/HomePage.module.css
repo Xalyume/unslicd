@@ -71,6 +71,10 @@
     justify-content: space-evenly;
 }
 
+.subContainer3 {
+    margin-bottom: 3em;
+}
+
 .subContainer3>h3 {
     font-size: 38px;
     text-align: center;
