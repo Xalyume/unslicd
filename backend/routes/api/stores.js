@@ -13,10 +13,10 @@ const validateSlice = [
         .withMessage('Please provide a valid store name.'),
     check('name')
         .custom(value => {
-            return Store.findOne({ where: { name: value } })
+            return Store.findOne({ where: { name: value.toLowerCase() } })
                 .then((store) => {
                     if (store) {
-                        return Promise.reject('Pizza store already exists.')
+                        return Promise.reject('Store already exists.')
                     }
                 })
         }),
@@ -37,7 +37,7 @@ router.get('/', asyncHandler(async (req, res) => {
 router.post('/', validateSlice, asyncHandler(async (req, res) => {
     const { name, location, description, addedBy } = req.body;
     const newStore = await Store.create({
-        name,
+        name: name.toLowerCase(),
         location,
         description,
         addedBy

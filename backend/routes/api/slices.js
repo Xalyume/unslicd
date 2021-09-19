@@ -13,7 +13,7 @@ const validateSlice = [
         .withMessage('Please provide a valid slice name.'),
     check('name')
         .custom(value => {
-            return Slice.findOne({ where: { name: value } })
+            return Slice.findOne({ where: { name: value.toLowerCase() } })
                 .then((slice) => {
                     if (slice) {
                         return Promise.reject('Pizza slice already exists.')
@@ -34,7 +34,7 @@ router.get('/', asyncHandler(async (req, res) => {
 router.post('/', validateSlice, asyncHandler(async (req, res) => {
     const { name, description, addedBy } = req.body;
     const newSlice = await Slice.create({
-        name,
+        name: name.toLowerCase(),
         description,
         addedBy
     })
@@ -42,7 +42,7 @@ router.post('/', validateSlice, asyncHandler(async (req, res) => {
     return res.json(newSlice);
 }))
 
-router.put('/:id(\\d+)', asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)', validateSlice, asyncHandler(async (req, res) => {
     const { name, description, id } = req.body;
     const updateSlice = await Slice.findByPk(id)
     const newSlice = await updateSlice.update({
