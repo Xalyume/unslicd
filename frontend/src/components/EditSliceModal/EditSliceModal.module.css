@@ -9,8 +9,54 @@
     padding: 2px;
 }
 
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    justify-self: center;
+    color: white;
+}
+
+.formContainer > h3 {
+    text-align: center;
+    margin: 5% 0;
+}
+
 .errors {
     color: red;
-    font-size: 13px;
-    margin: 3px;
+    font-size: smaller;
+    list-style-position: inside;
+    padding: 2px;
+}
+
+.formItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.formItem > * {
+    align-self: flex-start;
+}
+
+.modalBtn {
+    color: white;
+    background-color: transparent;
+    padding: 5px;
+    margin: 1rem 1rem;
+    border: 1px solid white;
+}
+
+.text {
+    height: 30px;
+    width: 250px;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.textbox {
+    resize: none;
+    height: 80px;
+    width: 250px;
+    border-radius: 5px;
 }

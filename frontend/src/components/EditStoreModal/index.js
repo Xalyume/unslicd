@@ -6,6 +6,7 @@ function EditStoreModal({ store }) {
     const [showModal, setShowModal] = useState(false);
 
     const onClose = () => setShowModal(false)
+    
 
     return (
         <>

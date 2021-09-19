@@ -60,10 +60,12 @@
 .checkin {
     display: flex;
     flex-direction: column-reverse;
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 5% 5%;
     width: 65%;
     max-width: 65%;
+    background-color: #e0b654;
+    border-radius: 5px;
 }
 
 .checkInText {
@@ -97,4 +99,10 @@
     padding: 15px;
     margin: 10px;
     border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.checkInDate {
+    font-size: 11px;
 }

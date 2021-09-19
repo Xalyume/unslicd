@@ -31,8 +31,9 @@ const EditSlice = ({ onClose, slice }) => {
     }
 
     return (
-        <div>
-            <div>
+        <div className={edit.container}>
+            <div className={edit.formContainer}>
+                <h3>Update This Slice:</h3>
                 <form
                     onSubmit={onEdit}
                 >
@@ -43,29 +44,31 @@ const EditSlice = ({ onClose, slice }) => {
                                 key={index}> {error} </li>
                         ))}
                     </ul>
-                    <div>
+                    <div className={edit.formItem}>
                         <label> Name of Slice:</label>
                         <input
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
+                            className={edit.text}
                         />
 
                     </div>
-                    <div>
+                    <div className={edit.formItem}>
                         <label> Description:</label>
                         <textarea
                             type="text"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
+                            className={edit.textbox}
                         />
                     </div>
                     <div className={edit.btngroup}>
                         <button
-                            className={edit.btn}
+                            className={edit.modalBtn}
                             type="submit">Update</button>
                         <button
-                            className={edit.btn}
+                            className={edit.modalBtn}
                             onClick={onClose}>Cancel</button>
                     </div>
                 </form>

@@ -11,19 +11,64 @@
     margin: 10% 10%;
 }
 
+.checkInForm {
+    color: white;
+}
+
+.checkInForm > h3 {
+    text-align: center;
+}
+
 .btn {
     text-decoration: none;
     background-color: transparent;
+    color: white;
     margin: 10px 5px;
     padding: 5px;
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 5px;
 }
 
 .redirect {
-    color: black;
+    color: white;
+    font-weight: bold;
 }
 
 .errors {
     color: red;
+}
+
+.redirects {
+    font-size: 11px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.formItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.formItem > * {
+    align-self: flex-start;
+}
+
+.formInput {
+    border: 1px solid rgba(0, 0, 0, 0.418);
+}
+
+.text {
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.textbox {
+    resize: none;
+    height: 100px;
+    width: 300px;
+    border-radius: 5px;
+    padding-top: 3px;
 }

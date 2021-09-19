@@ -9,6 +9,13 @@ function DelCheckinModal({ checkin }) {
         setShowModal(false)
     }
 
+    if (showModal === true) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'unset';
+
+    }
+
     return (
         <>
             <button onClick={() => setShowModal(true)}

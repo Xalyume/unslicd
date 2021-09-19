@@ -37,10 +37,11 @@ const SliceCard = ({ checkin }) => {
                     <span>{checkin?.Slouse?.name}</span>
                     <span> at </span>
                     <span>{checkin?.Store?.name}</span>
-                    <span> on </span>
-                    <span>{checkinDate[1]}/</span>
-                    <span>{checkinDate[2]}/</span>
-                    <span>{checkinDate[0]}</span>
+                    <p className={checkincss.checkInDate}> on:
+                    <span className={checkincss.checkInDate}> {checkinDate[1]}/</span>
+                    <span className={checkincss.checkInDate}>{checkinDate[2]}/</span>
+                    <span className={checkincss.checkInDate}>{checkinDate[0]}</span>
+                    </p>
                 </p>
                 <p className={checkincss.review}>{checkin?.review}</p>
                 <p> Review: {checkin?.rating}/5</p>
