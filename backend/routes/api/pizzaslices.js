@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
-const { Slice } = require('../../db/models');
+const { PizzaSlice } = require('../../db/models')
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ const validateSlice = [
         .withMessage('Please provide a valid slice name.'),
     check('name')
         .custom(value => {
-            return Slice.findOne({ where: { name: value.toLowerCase() } })
+            return PizzaSlice.findOne({ where: { name: value.toLowerCase() } })
                 .then((slice) => {
                     if (slice) {
                         return Promise.reject('Pizza slice already exists.')
@@ -27,13 +27,14 @@ const validateSlice = [
 ]
 
 router.get('/', asyncHandler(async (req, res) => {
-    const slices = await Slice.findAll();
+    const slices = await PizzaSlice.findAll();
+
     return res.json(slices);
 }))
 
 router.post('/', validateSlice, asyncHandler(async (req, res) => {
     const { name, description, addedBy } = req.body;
-    const newSlice = await Slice.create({
+    const newSlice = await PizzaSlice.create({
         name: name.toLowerCase(),
         description,
         addedBy
@@ -44,7 +45,7 @@ router.post('/', validateSlice, asyncHandler(async (req, res) => {
 
 router.put('/:id(\\d+)', validateSlice, asyncHandler(async (req, res) => {
     const { name, description, id } = req.body;
-    const updateSlice = await Slice.findByPk(id)
+    const updateSlice = await PizzaSlice.findByPk(id)
     const newSlice = await updateSlice.update({
         name,
         description,
@@ -55,7 +56,7 @@ router.put('/:id(\\d+)', validateSlice, asyncHandler(async (req, res) => {
 
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const { id } = req.body;
-    const slice = await Slice.findByPk(id)
+    const slice = await PizzaSlice.findByPk(id)
     if (slice) {
         await slice.destroy();
     }

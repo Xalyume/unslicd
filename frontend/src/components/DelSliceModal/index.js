@@ -21,7 +21,7 @@ function DelSliceModal({ slice }) {
     return (
         <>
             <button onClick={() => setShowModal(true)}
-                className={delcss.btn}
+                className={delcss.btnCard}
             >Delete</button>
             {showModal && (
                 <Modal onClose={onClose}>

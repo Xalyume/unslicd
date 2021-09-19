@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
 
     // User hasMany Slices, Stores, Checkins
-    User.hasMany(models.Slice, { foreignKey: 'addedBy' })
+    User.hasMany(models.PizzaSlice, { foreignKey: 'addedBy' })
     User.hasMany(models.Store, { foreignKey: 'addedBy' })
     User.hasMany(models.CheckIn, { foreignKey: 'userId' })
   };

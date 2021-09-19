@@ -49,6 +49,8 @@ app.use((_req, _res, next) => {
 // Process sequelize errors
 app.use((err, _req, _res, next) => {
     // check if error is a Sequelize error:
+    console.log("error we hit", _req);
+
     if (err instanceof ValidationError) {
         err.errors = err.errors.map((e) => e.message);
         err.title = 'Validation error';

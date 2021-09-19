@@ -3,13 +3,14 @@ import { useDispatch } from 'react-redux';
 
 import { editStore } from '../../store/store';
 
-// import edit from './EditSliceModal.module.css'
+import edit from './EditStore.module.css'
 
 const EditStore = ({ onClose, store }) => {
     const dispatch = useDispatch();
     const [name, setName] = useState(store.name)
     const [location, setLocation] = useState(store.location)
     const [description, setDescription] = useState(store.description)
+    const [errors, setErrors] = useState([])
 
     const onEdit = (e) => {
         e.preventDefault();
@@ -21,53 +22,66 @@ const EditStore = ({ onClose, store }) => {
             description
         }
 
-        dispatch(editStore(payload))
-        onClose()
+        setErrors([])
+
+        return dispatch(editStore(payload))
+            .then(async () => onClose())
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            })
     }
 
     return (
-        <div>
-            <div>
+        <div className={edit.container}>
+            <div className={edit.formContainer}>
+                <h3>Update This Store:</h3>
                 <form
                     onSubmit={onEdit}
                 >
-                    {/* <ul>
+                    <ul>
                         {errors.map((error, index) => (
-                            <li key={index}> {error} </li>
+                            <li
+                                className={edit.errors}
+                                key={index}> {error} </li>
                         ))}
-                    </ul> */}
-                    <div>
+                    </ul>
+                    <div className={edit.formItem}>
                         <label>Name of Store:</label>
                         <input
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            required
+                            className={edit.text}
                         />
 
                     </div>
-                    <div>
+                    <div className={edit.formItem}>
                         <label>Location:</label>
                         <input
                             type="text"
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
-                            required
+                            className={edit.text}
                         />
 
                     </div>
-                    <div>
+                    <div className={edit.formItem}>
                         <label>Description:</label>
                         <textarea
                             type="text"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            required
+                            className={edit.textbox}
                         />
                     </div>
-                    <div >
-                        <button type="submit">Update</button>
-                        <button onClick={onClose}>Cancel</button>
+                    <div className={edit.btngroup}>
+                        <button
+                            className={edit.modalBtn}
+                            type="submit">Update</button>
+                        <button
+                            className={edit.modalBtn}
+                            onClick={onClose}>Cancel</button>
                     </div>
                 </form>
             </div >

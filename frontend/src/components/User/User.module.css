@@ -10,7 +10,7 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     justify-items: center;
     max-width: 18%;
     max-height: 18%;
@@ -19,10 +19,14 @@
 .profile {
     display: flex;
     flex-direction: column;
-    justify-content: flex-ce;
     justify-items: center;
+    justify-content: center;
     align-content: center;
     align-items: center;
+}
+
+.profile > p {
+    text-align: center;
 }
 
 .pic {
@@ -34,8 +38,8 @@
 .btnGroup {
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    margin: 25px;
+    /* padding: 15px;
+    margin: 25px; */
 }
 
 .btn {

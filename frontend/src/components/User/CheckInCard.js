@@ -34,7 +34,7 @@ const SliceCard = ({ checkin }) => {
             <div className={checkincss.cardInfo}>
                 <p className={checkincss.checkInText}>{checkin?.User?.username}
                     <span> had </span>
-                    <span>{checkin?.Slouse?.name}</span>
+                    <span>{checkin?.PizzaSlouse?.name}</span>
                     <span> at </span>
                     <span>{checkin?.Store?.name}</span>
                     <p className={checkincss.checkInDate}> on:

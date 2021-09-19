@@ -3,8 +3,9 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
+const { restoreUser } = require('../../utils/auth');
 
-const { CheckIn, User, Slice, Store } = require('../../db/models');
+const { CheckIn, User, PizzaSlice, Store } = require('../../db/models');
 
 const router = express.Router();
 
@@ -24,9 +25,13 @@ const validateSlice = [
     handleValidationErrors,
 ]
 
-router.get('/', asyncHandler(async (req, res) => {
+router.get('/', restoreUser, asyncHandler(async (req, res) => {
+
     const checkIns = await CheckIn.findAll({
-        include: [User, Slice, Store],
+        where: {
+            userId: req.user.id
+        },
+        include: [User, PizzaSlice, Store],
         order: [["createdAt", "DESC"]],
     });
 
@@ -36,8 +41,10 @@ router.get('/', asyncHandler(async (req, res) => {
 router.post('/', validateSlice, asyncHandler(async (req, res) => {
     let { storeId, userId, sliceId, review, rating, image } = req.body;
 
+    let newCheckIn;
+
     if (image.length <= 0) {
-        await CheckIn.create({
+        newCheckIn = await CheckIn.create({
             storeId,
             userId,
             sliceId,
@@ -45,7 +52,7 @@ router.post('/', validateSlice, asyncHandler(async (req, res) => {
             rating,
         })
     } else {
-        await CheckIn.create({
+        newCheckIn = await CheckIn.create({
             storeId,
             userId,
             sliceId,
@@ -55,16 +62,13 @@ router.post('/', validateSlice, asyncHandler(async (req, res) => {
         })
     }
 
+    const checkIn = await CheckIn.findByPk(
+        newCheckIn.id,
+        {
+            include: [User, PizzaSlice, Store]
+        });
 
-    const checkIns = await CheckIn.findAll({
-        where: {
-            userId
-        },
-        include: [User, Slice, Store]
-    });
-
-    const newCheckIn = checkIns[0]
-    return res.json(newCheckIn);
+    return res.json(checkIn);
 }))
 
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {

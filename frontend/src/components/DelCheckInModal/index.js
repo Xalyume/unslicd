@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import DelCheckIn from './DelCheckIn';
 
+import deletecss from './DeleteCheckin.module.css'
+
 function DelCheckinModal({ checkin }) {
     const [showModal, setShowModal] = useState(false);
 
@@ -19,6 +21,7 @@ function DelCheckinModal({ checkin }) {
     return (
         <>
             <button onClick={() => setShowModal(true)}
+                className={deletecss.btnCard}
             >Delete</button>
             {showModal && (
                 <Modal onClose={onClose}>

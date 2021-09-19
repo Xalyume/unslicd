@@ -81,7 +81,10 @@ const checkInReducer = (state = initialState, action) => {
             return newState;
         case ADD_CHECK:
             newState = Object.assign({}, state)
-            newState[action.checkIn.id] = {...action.checkIn}
+            newState[action.checkIn.id] = action.checkIn
+            console.log("newState", newState)
+            console.log("new checkin", action.checkIn)
+            console.log("new entry after add", newState[action.checkIn.id])
             return newState;
         case DEL_CHECK:
             newState = Object.assign({}, state)
