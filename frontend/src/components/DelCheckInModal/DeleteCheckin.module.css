@@ -20,7 +20,9 @@
 }
 
 .btnCard {
-    color: #C04E44;
+    color: black;
     background-color: transparent;
-    padding: 2px;
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 5px;
 }

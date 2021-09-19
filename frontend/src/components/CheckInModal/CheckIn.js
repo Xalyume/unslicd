@@ -58,6 +58,7 @@ const CheckIn = ({ onClose }) => {
             <div>
                 <form
                     onSubmit={onCheckIn}
+                    className={checkIn.checkInForm}
                 >
                     <ul>
                         {errors.map((error, index) => (
@@ -66,7 +67,8 @@ const CheckIn = ({ onClose }) => {
                                 key={index}> {error} </li>
                         ))}
                     </ul>
-                    <div>
+                    <h3>Check in a new slice!</h3>
+                    <div className={checkIn.formItem}>
                         <label>Slice:</label>
                         <select name="slices"
                             onChange={(e) => setSlice(e.target.value)}
@@ -83,12 +85,13 @@ const CheckIn = ({ onClose }) => {
                             ))}
                         </select>
                     </div>
-                    <p>If you don't see your slice, you can
+                    <p className={checkIn.redirects}>If you don't see your slice, you can
+                        <span> </span>
                         <Link
                             className={checkIn.redirect}
-                            to='/addslice'> add it here</Link>
+                            to='/addslice'>add it here</Link>
                     </p>
-                    <div>
+                    <div className={checkIn.formItem}>
                         <label>Store:</label>
                         <select name="stores"
                             onChange={(e) => setStore(e.target.value)}
@@ -105,20 +108,23 @@ const CheckIn = ({ onClose }) => {
                             ))}
                         </select>
                     </div>
-                    <p>If you don't see your store, you can
+                    <p className={checkIn.redirects}>If you don't see your store, you can
+                        <span> </span>
                         <Link
                             className={checkIn.redirect}
-                            to='/addstore'> add it here</Link>
+                            to='/addstore'>add it here</Link>
                     </p>
-                    <div>
+                    <div className={checkIn.formItem}>
                         <label>Review:</label>
                         <textarea
                             type="text"
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
+                            className={`${checkIn.textbox} ${checkIn.formInput}`}
+
                         />
                     </div>
-                    <div>
+                    <div className={checkIn.formItem}>
                         <label>Rating:</label>
                         <select name="rating"
                             onChange={(e) => setRating(e.target.value)}
@@ -130,7 +136,7 @@ const CheckIn = ({ onClose }) => {
                             <option value={5}>5</option>
                         </select>
                     </div>
-                    <div>
+                    <div className={checkIn.formItem}>
                         <label>Upload a URL:</label>
                         <input
                             type="text"

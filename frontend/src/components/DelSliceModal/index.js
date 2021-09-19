@@ -11,10 +11,17 @@ function DelSliceModal({ slice }) {
         setShowModal(false)
     }
 
+    if (showModal === true) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'unset';
+
+    }
+
     return (
         <>
             <button onClick={() => setShowModal(true)}
-                className={delcss.btn}
+                className={delcss.btnCard}
             >Delete</button>
             {showModal && (
                 <Modal onClose={onClose}>

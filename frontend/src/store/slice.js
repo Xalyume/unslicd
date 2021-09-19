@@ -26,7 +26,7 @@ const edit = slice => ({
 })
 
 export const getSlices = () => async dispatch => {
-    const response = await csrfFetch('/api/slices')
+    const response = await csrfFetch('/api/pizzaslices')
 
     const slices = await response.json();
 
@@ -36,7 +36,7 @@ export const getSlices = () => async dispatch => {
 export const addSlice = (sliceData) => async dispatch => {
     const { name, description, addedBy } = sliceData
 
-    const response = await csrfFetch('/api/slices', {
+    const response = await csrfFetch('/api/pizzaslices', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -57,7 +57,7 @@ export const addSlice = (sliceData) => async dispatch => {
 
 export const deleteSlice = (id) => async dispatch => {
 
-    const response = await csrfFetch(`/api/slices/${id}`, {
+    const response = await csrfFetch(`/api/pizzaslices/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -75,7 +75,7 @@ export const deleteSlice = (id) => async dispatch => {
 export const editSlice = (sliceData) => async dispatch => {
     const { id, name, description } = sliceData
 
-    const response = await csrfFetch(`/api/slices/${id}`, {
+    const response = await csrfFetch(`/api/pizzaslices/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"

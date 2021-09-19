@@ -10,7 +10,7 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     justify-items: center;
     max-width: 18%;
     max-height: 18%;
@@ -19,10 +19,14 @@
 .profile {
     display: flex;
     flex-direction: column;
-    justify-content: flex-ce;
     justify-items: center;
+    justify-content: center;
     align-content: center;
     align-items: center;
+}
+
+.profile > p {
+    text-align: center;
 }
 
 .pic {
@@ -34,8 +38,8 @@
 .btnGroup {
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    margin: 25px;
+    /* padding: 15px;
+    margin: 25px; */
 }
 
 .btn {
@@ -60,10 +64,12 @@
 .checkin {
     display: flex;
     flex-direction: column-reverse;
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 5% 5%;
     width: 65%;
     max-width: 65%;
+    background-color: #e0b654;
+    border-radius: 5px;
 }
 
 .checkInText {
@@ -97,4 +103,10 @@
     padding: 15px;
     margin: 10px;
     border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.checkInDate {
+    font-size: 11px;
 }

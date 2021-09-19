@@ -34,13 +34,14 @@ const SliceCard = ({ checkin }) => {
             <div className={checkincss.cardInfo}>
                 <p className={checkincss.checkInText}>{checkin?.User?.username}
                     <span> had </span>
-                    <span>{checkin?.Slouse?.name}</span>
+                    <span>{checkin?.PizzaSlouse?.name}</span>
                     <span> at </span>
                     <span>{checkin?.Store?.name}</span>
-                    <span> on </span>
-                    <span>{checkinDate[1]}/</span>
-                    <span>{checkinDate[2]}/</span>
-                    <span>{checkinDate[0]}</span>
+                    <p className={checkincss.checkInDate}> on:
+                    <span className={checkincss.checkInDate}> {checkinDate[1]}/</span>
+                    <span className={checkincss.checkInDate}>{checkinDate[2]}/</span>
+                    <span className={checkincss.checkInDate}>{checkinDate[0]}</span>
+                    </p>
                 </p>
                 <p className={checkincss.review}>{checkin?.review}</p>
                 <p> Review: {checkin?.rating}/5</p>

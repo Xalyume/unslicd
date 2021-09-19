@@ -85,4 +85,7 @@
 
 .errors {
     color: red;
+    font-size: smaller;
+    list-style-position: inside;
+    padding: 2px;
 }

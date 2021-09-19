@@ -1,3 +1,9 @@
+.btnCard {
+    color: #C04E44;
+    background-color: transparent;
+    padding: 2px;
+}
+
 .btngroup {
     display: flex;
     justify-content: center;

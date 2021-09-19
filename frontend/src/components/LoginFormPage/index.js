@@ -17,6 +17,12 @@ const LoginFormPage = () => {
         <Redirect to='/' />
     );
 
+    const demoUser = (e) => {
+        e.preventDefault()
+
+        dispatch(sessionActions.login({ credential: 'demo@user.io', password: 'password' }))
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -48,7 +54,6 @@ const LoginFormPage = () => {
                                 type="text"
                                 value={credential}
                                 onChange={(e) => setCrendtial(e.target.value)}
-                                required
                             />
                         </label>
                     </div>
@@ -59,12 +64,12 @@ const LoginFormPage = () => {
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                required
                             />
                         </label>
                     </div>
                     <button type="submit" className={logincss.btn}>Log In</button>
                     <Link className={logincss.signup} to='/signup'>Not Registered? Sign Up Today!</Link>
+                    <button className={logincss.btnDemo} onClick={demoUser}>Demo User</button>
                 </form>
             </div>
         </div>

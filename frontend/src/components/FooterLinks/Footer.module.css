@@ -1,0 +1,23 @@
+.logoContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.logos{
+    max-height: 45px;
+    border-radius: 40px;
+    margin: 0 4px;
+    padding-top: 3px;
+    background-color: transparent;
+}
+
+.footerContainer {
+    background-color: rgba(192, 78, 68, .9);
+    height: 50px;
+    width: 100%;
+    /* position: fixed; */
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

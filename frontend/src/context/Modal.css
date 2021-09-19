@@ -23,6 +23,7 @@
   /* background-color: #ffd574da; */
   background-color: rgba(192, 78, 68, .9);
   border-radius: 15px;
-  width: 25%;
-  height: 50%;
+  width: auto;
+  height: auto;
+  padding: 2rem;
 }

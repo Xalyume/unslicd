@@ -15,7 +15,7 @@ const StoreCard = ({ store }) => {
 
     if (editButtons) {
         editDelBtns = (
-        <div>
+        <div className={storecss.innerBtnContainer}>
             <EditStoreModal store={store} />
             <DelStoreModal store={store} />
         </div>

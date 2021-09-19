@@ -21,7 +21,7 @@ module.exports = {
       sliceId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: "Slice" }
+        references: { model: "PizzaSlice" }
       },
       review: {
         allowNull: false,

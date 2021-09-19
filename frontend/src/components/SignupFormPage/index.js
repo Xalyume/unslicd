@@ -55,7 +55,6 @@ const SignupFormPage = () => {
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                required
                             />
                         </label>
                     </div>
@@ -66,7 +65,6 @@ const SignupFormPage = () => {
                                 type="text"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                required
                             />
                         </label>
                     </div>
@@ -77,7 +75,6 @@ const SignupFormPage = () => {
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                required
                             />
                         </label>
                     </div>
@@ -88,7 +85,6 @@ const SignupFormPage = () => {
                                 type="password"
                                 value={confirmed}
                                 onChange={(e) => setConfirmed(e.target.value)}
-                                required
                             />
                         </label>
                     </div>

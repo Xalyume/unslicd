@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     // CheckIn belongsTo one User, Store, Slice
     CheckIn.belongsTo(models.User, {foreignKey: "userId"})
     CheckIn.belongsTo(models.Store, {foreignKey: "storeId"})
-    CheckIn.belongsTo(models.Slice, {foreignKey: "sliceId"})
+    CheckIn.belongsTo(models.PizzaSlice, {foreignKey: "sliceId"})
   };
   return CheckIn;
 };
