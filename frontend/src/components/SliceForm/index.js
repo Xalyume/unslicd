@@ -31,10 +31,10 @@ const SliceForm = () => {
         }
 
         return dispatch(addSlice(payload))
+            .then(async () => history.push('/'))
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
-                else return history.push('/')
             })
 
         // if (newSlice) {

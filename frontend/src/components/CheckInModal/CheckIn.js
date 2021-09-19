@@ -40,10 +40,10 @@ const CheckIn = ({ onClose }) => {
         setErrors([])
 
         return dispatch(addCheckIn(payload))
+            .then(async () => onClose())
             .catch(async (res) => {
                 const data = await res.json();
                 if (data && data.errors) setErrors(data.errors);
-                else onClose()
             })
 
     }
