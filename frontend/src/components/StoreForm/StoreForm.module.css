@@ -1,0 +1,88 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    margin: 8% 21%;
+    justify-content: center;
+}
+
+.pic {
+    display: flex;
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+    background-image: url("https://www.nycgo.com/images/made/370ac33eb27353a6/J--V-Famous-Pizza-David-La-Spina-2018DL055-005778-FFF_900_600_70_c1.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 36px;
+    border-bottom-left-radius: 36px;
+    opacity: .8;
+}
+
+.formContainer {
+    background-color: #d7a63254;
+    padding: 25px;
+    border-top-right-radius: 36px;
+    border-bottom-right-radius: 36px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.formContainer > h1 {
+    text-align: center;
+    margin: 5% 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.form > * {
+    margin: 25px 0;
+}
+
+.formItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.formItem > * {
+    align-self: flex-start;
+}
+
+.formInput {
+    border: 1px solid rgba(0, 0, 0, 0.418);
+}
+
+.text {
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.textbox {
+    resize: none;
+    height: 100px;
+    width: 350px;
+    border-radius: 5px;
+}
+
+
+.btns > * {
+    margin: 0 5px;
+    padding: 0 10px;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: #C04E44;
+    color: white;
+    border: 3px solid #C04E44;
+    border-radius: 6px;
+}
+
+.errors {
+    color: red;
+}

@@ -33,7 +33,7 @@ const SliceCard = ({ checkin }) => {
         <div className={checkincss.cardContainer}>
             <div className={checkincss.cardInfo}>
                 <p className={checkincss.checkInText}>{checkin?.User?.username}
-                    <span> had a </span>
+                    <span> had </span>
                     <span>{checkin?.Slouse?.name}</span>
                     <span> at </span>
                     <span>{checkin?.Store?.name}</span>

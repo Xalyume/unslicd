@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: row;
-    margin: 8% 27%;
+    margin: 8% 21%;
     justify-content: center;
 }
 
@@ -9,6 +9,7 @@
     display: flex;
     height: auto;
     width: 100%;
+    max-width: 100%;
     background-image: url("https://www.seriouseats.com/thmb/f6d7g-Q6dXQQSE8x0XU7dxnj9nk=/1500x1125/filters:fill(auto,1)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__images__2015__01__20150127-san-francisco-pizza-by-the-slice-pizza-shop-29d0db5cbaa748038a00ebde8cf543f7.jpg");
     background-position: center center;
     background-repeat: no-repeat;
@@ -23,6 +24,8 @@
     padding: 25px;
     border-top-right-radius: 36px;
     border-bottom-right-radius: 36px;
+    width: 100%;
+    max-width: 100%;
 }
 
 .formContainer > h1 {
@@ -58,6 +61,7 @@
     height: 30px;
     width: 300px;
     border-radius: 5px;
+    padding: 3px;
 }
 
 .textbox {

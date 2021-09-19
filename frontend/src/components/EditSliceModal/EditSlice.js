@@ -3,12 +3,13 @@ import { useDispatch } from 'react-redux';
 
 import { editSlice } from '../../store/slice';
 
-// import edit from './EditSliceModal.module.css'
+import edit from './EditSliceModal.module.css'
 
 const EditSlice = ({ onClose, slice }) => {
     const dispatch = useDispatch();
     const [name, setName] = useState(slice.name)
     const [description, setDescription] = useState(slice.description)
+    const [errors, setErrors] = useState([])
 
     const onEdit = (e) => {
         e.preventDefault();
@@ -19,8 +20,14 @@ const EditSlice = ({ onClose, slice }) => {
             description
         }
 
-        dispatch(editSlice(payload))
-        onClose()
+        setErrors([])
+
+        return dispatch(editSlice(payload))
+            .then(async () => onClose())
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            })
     }
 
     return (
@@ -29,18 +36,19 @@ const EditSlice = ({ onClose, slice }) => {
                 <form
                     onSubmit={onEdit}
                 >
-                    {/* <ul>
+                    <ul>
                         {errors.map((error, index) => (
-                            <li key={index}> {error} </li>
+                            <li
+                                className={edit.errors}
+                                key={index}> {error} </li>
                         ))}
-                    </ul> */}
+                    </ul>
                     <div>
                         <label> Name of Slice:</label>
                         <input
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            required
                         />
 
                     </div>
@@ -50,12 +58,15 @@ const EditSlice = ({ onClose, slice }) => {
                             type="text"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            required
                         />
                     </div>
-                    <div >
-                        <button type="submit">Update</button>
-                        <button onClick={onClose}>Cancel</button>
+                    <div className={edit.btngroup}>
+                        <button
+                            className={edit.btn}
+                            type="submit">Update</button>
+                        <button
+                            className={edit.btn}
+                            onClick={onClose}>Cancel</button>
                     </div>
                 </form>
             </div >

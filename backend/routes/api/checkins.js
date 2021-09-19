@@ -8,6 +8,22 @@ const { CheckIn, User, Slice, Store } = require('../../db/models');
 
 const router = express.Router();
 
+const validateSlice = [
+    check('storeId')
+        .notEmpty()
+        .withMessage('Please provide a valid slice.'),
+    check('sliceId')
+        .notEmpty()
+        .withMessage('Please provide a valid store.'),
+    check('review')
+        .notEmpty()
+        .withMessage('Please provide a valid review.'),
+    check('rating')
+        .notEmpty()
+        .withMessage('Please provide a valid rating.'),
+    handleValidationErrors,
+]
+
 router.get('/', asyncHandler(async (req, res) => {
     const checkIns = await CheckIn.findAll({
         include: [User, Slice, Store],
@@ -17,7 +33,7 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json(checkIns);
 }))
 
-router.post('/', asyncHandler(async (req, res) => {
+router.post('/', validateSlice, asyncHandler(async (req, res) => {
     let { storeId, userId, sliceId, review, rating, image } = req.body;
 
     if (image.length <= 0) {

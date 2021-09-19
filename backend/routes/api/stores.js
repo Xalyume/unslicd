@@ -7,15 +7,37 @@ const { Store } = require('../../db/models');
 
 const router = express.Router();
 
+const validateSlice = [
+    check('name')
+        .notEmpty()
+        .withMessage('Please provide a valid store name.'),
+    check('name')
+        .custom(value => {
+            return Store.findOne({ where: { name: value.toLowerCase() } })
+                .then((store) => {
+                    if (store) {
+                        return Promise.reject('Store already exists.')
+                    }
+                })
+        }),
+    check('location')
+        .notEmpty()
+        .withMessage('Please provide a valid store location.'),
+    check('description')
+        .notEmpty()
+        .withMessage('Please provide a valid store description.'),
+    handleValidationErrors,
+]
+
 router.get('/', asyncHandler(async (req, res) => {
     const stores = await Store.findAll();
     return res.json(stores);
 }))
 
-router.post('/', asyncHandler(async (req, res) => {
+router.post('/', validateSlice, asyncHandler(async (req, res) => {
     const { name, location, description, addedBy } = req.body;
     const newStore = await Store.create({
-        name,
+        name: name.toLowerCase(),
         location,
         description,
         addedBy
