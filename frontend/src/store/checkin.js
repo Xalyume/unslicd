@@ -77,7 +77,7 @@ const checkInReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_CHECK:
             newState = {}
-            action.checkIns.forEach((checkIn, index) => newState[index] = checkIn)
+            action.checkIns.forEach((checkIn) => newState[checkIn.id] = checkIn)
             return newState;
         case ADD_CHECK:
             newState = Object.assign({}, state)
