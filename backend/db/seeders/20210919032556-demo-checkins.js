@@ -45,6 +45,7 @@ module.exports = {
         sliceId: 2,
         review: 'Wow! What a great spot, def lived up to its hype! I’d love to come back here again one day, So good I forgot to take a picture lol.',
         rating: 5,
+        image: 'https://media-cdn.tripadvisor.com/media/photo-s/07/cb/f1/f8/barbeque-chicken-pizza.jpg',
         createdAt: new Date('2021-9-13'),
         updatedAt: new Date()
       },

@@ -31,8 +31,8 @@ router.get('/', restoreUser, asyncHandler(async (req, res) => {
         where: {
             userId: req.user.id
         },
+        order: [["createdAt", "ASC"]],
         include: [User, PizzaSlice, Store],
-        order: [["createdAt", "DESC"]],
     });
 
     return res.json(checkIns);
