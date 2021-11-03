@@ -38,9 +38,9 @@ export const addSlice = (sliceData) => async dispatch => {
 
     const response = await csrfFetch('/api/pizzaslices', {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        // headers: {
+        //     "Content-Type": "application/json"
+        // },
         body: JSON.stringify({
             name,
             description,
@@ -109,7 +109,7 @@ const sliceReducer = (state = initialState, action) => {
         case DEL_SLICE:
             const toDelete = action.id;
             let updateState = { ...state };
-            delete updateState[toDelete]
+
             return updateState
         case EDIT_SLICE:
             const editStates= {...state}
