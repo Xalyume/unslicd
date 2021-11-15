@@ -42,4 +42,4 @@ This application uses a PERN stack, with the front-end being created through Rea
 * Implementing AWS for user's check-in photos.
 * Allow users to upload/update their own profile pictures
 * Global tab that shows checkins from all users
-* Remove edit 
+* Remove delete buttons for pizza slices and stores
