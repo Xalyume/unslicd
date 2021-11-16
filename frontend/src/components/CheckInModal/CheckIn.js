@@ -139,6 +139,7 @@ const CheckIn = ({ onClose }) => {
                     <div className={checkIn.formItem}>
                         <label>Upload a URL:</label>
                         <input
+                            className={checkIn.urlInput}
                             type="text"
                             value={image}
                             onChange={(e) => setImage(e.target.value)}

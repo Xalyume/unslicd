@@ -12,7 +12,7 @@
 .container {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: auto;
     justify-content: center;
     justify-self: center;
     color: white;
@@ -33,6 +33,7 @@
 .formItem {
     display: flex;
     flex-direction: column;
+    width: auto;
 }
 
 .formItem > * {
