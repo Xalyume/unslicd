@@ -44,7 +44,7 @@ const SliceCard = ({ checkin }) => {
                     </p>
                 </p>
                 <p className={checkincss.review}>{checkin?.review}</p>
-                <p> Review: {checkin?.rating}/5</p>
+                <p className={checkincss.rating}> Review: {checkin?.rating}/5</p>
             <div className={checkincss.delBtns}>
                 {checkin && delBtns}
             </div>
