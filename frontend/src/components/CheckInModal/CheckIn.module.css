@@ -4,11 +4,12 @@
     color: white;
     width: 100%;
     text-align: flex-start;
-    font-size: large;
+    font-size: 1vw;
+    cursor: pointer;
 }
 
 .container {
-    margin: 10% 10%;
+    margin: 1%;
 }
 
 .checkInForm {
@@ -29,13 +30,21 @@
     border-radius: 5px;
 }
 
+.btn:hover {
+    cursor: pointer;
+    background-color: #D7A532;
+    color: white;
+}
+
 .redirect {
     color: white;
     font-weight: bold;
 }
 
 .errors {
-    color: red;
+    font-size: small;
+    color: #D7A532;
+    margin: 1% 0;
 }
 
 .redirects {
@@ -54,8 +63,13 @@
     align-self: flex-start;
 }
 
+.urlInput {
+    padding: 1px 2%;
+}
+
 .formInput {
     border: 1px solid rgba(0, 0, 0, 0.418);
+    padding: 1px 2%;
 }
 
 .text {

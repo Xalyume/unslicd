@@ -38,16 +38,18 @@ const SliceCard = ({ checkin }) => {
                     <span> at </span>
                     <span>{checkin?.Store?.name}</span>
                     <p className={checkincss.checkInDate}> on:
-                    <span className={checkincss.checkInDate}> {checkinDate[1]}/</span>
-                    <span className={checkincss.checkInDate}>{checkinDate[2]}/</span>
-                    <span className={checkincss.checkInDate}>{checkinDate[0]}</span>
+                        <span className={checkincss.checkInDate}> {checkinDate[1]}/</span>
+                        <span className={checkincss.checkInDate}>{checkinDate[2]}/</span>
+                        <span className={checkincss.checkInDate}>{checkinDate[0]}</span>
                     </p>
                 </p>
-                <p className={checkincss.review}>{checkin?.review}</p>
-                <p> Review: {checkin?.rating}/5</p>
-            <div className={checkincss.delBtns}>
-                {checkin && delBtns}
-            </div>
+                <div className={checkincss.reviewContainer}>
+                    <p className={checkincss.review}>{checkin?.review}</p>
+                </div>
+                <p className={checkincss.rating}> Review: {checkin?.rating}/5</p>
+                <div className={checkincss.delBtns}>
+                    {checkin && delBtns}
+                </div>
             </div>
             <img
                 className={checkincss.checkinPic}
