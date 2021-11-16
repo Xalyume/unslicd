@@ -30,7 +30,7 @@
 }
 
 .pic {
-    width: 44%;
+    width: 75px;
     /* height: 10%; */
     border-radius: 50px;
 }
@@ -79,22 +79,26 @@
 
 .checkinPic {
     width: 50%;
-    height: auto;
+    height: 175px;
     max-width: 175px;
     max-height: 175px;
     border: 1px solid black;
     border-radius: 15px;
 }
 
-.review {
-    font-size: .9vw;
+.reviewContainer{
     min-width: auto;
     max-width: 300px;
     height: 100px;
     max-height: 100px;
-    padding: 1.5%;
+    padding: 1%;
     border: 1px solid black;
-    background-color: #ffda83be
+    background-color: #ffda83be;
+    overflow-y: scroll;
+}
+
+.review {
+    font-size: 1vw;
 }
 
 .rating {
@@ -110,8 +114,18 @@
     border: 1px solid black;
     background-color: white;
     border-radius: 5px;
+    height: auto;
 }
 
 .checkInDate {
     font-size: 11px;
+}
+
+.userInfo {
+    font-size: 11px;
+    text-align: center;
+}
+
+.btn {
+    font-size: 1vw;
 }

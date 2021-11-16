@@ -30,8 +30,10 @@ const User = () => {
                 <div className={usercss.profile}>
                     <img src={"https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"}
                         alt="profile_pic" className={usercss.pic} />
-                    <p>Welcome Back! {sessionUser.username}</p>
-                    <p>Member Since: {membership[1]}/{membership[2]}/{membership[0]}</p>
+                    <div className={usercss.userInfo}>
+                        <p>Welcome Back! {sessionUser.username}</p>
+                        <p>Member Since: {membership[1]}/{membership[2]}/{membership[0]}</p>
+                    </div>
                 </div>
                 <div className={usercss.btnGroup}>
                     <div className={usercss.btn}>
