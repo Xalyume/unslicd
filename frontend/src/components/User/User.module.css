@@ -73,7 +73,7 @@
 }
 
 .checkInText {
-    font-size: 1.1vw;
+    font-size: 13px;
     margin-bottom: 3px;
 }
 
@@ -88,7 +88,7 @@
 
 .reviewContainer{
     min-width: auto;
-    max-width: 300px;
+    max-width: 275px;
     height: 100px;
     max-height: 100px;
     padding: 1%;
@@ -122,8 +122,10 @@
 }
 
 .userInfo {
-    font-size: 11px;
+    font-size: 12px;
     text-align: center;
+    margin-top: 5px;
+    margin-bottom: 30px;
 }
 
 .btn {

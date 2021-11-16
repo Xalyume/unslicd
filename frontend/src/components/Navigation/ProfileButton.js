@@ -31,7 +31,7 @@ function ProfileButton({ user }) {
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
-        
+
         return history.push('/');
     };
 
@@ -42,7 +42,7 @@ function ProfileButton({ user }) {
                     alt="profile_pic" className={navcss.pic} />
             </button>
             {showMenu && (
-                <div>
+                <div className={navcss.userText}>
                     <p className={navcss.btn}>{user.username}</p>
                     <p className={navcss.btn}>{user.email}</p>
                     <p>

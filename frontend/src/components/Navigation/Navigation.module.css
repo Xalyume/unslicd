@@ -5,6 +5,7 @@
     height: 4em;
     background-color: rgba(192, 78, 68, .9);
     width: auto;
+    padding: 0 10%;
 }
 
 .sectionsOne {
@@ -42,8 +43,8 @@
 }
 
 .pic {
-    width: 90%;
-    height: 90%;
+    width: 50px;
+    height: 50px;
     border-radius: 50px;
 }
 
@@ -56,4 +57,10 @@
     text-emphasis: none;
     margin: 0 15px;
     cursor: pointer;
+}
+
+.userText{
+    font-size: 15px;
+    /* width: 100px; */
+    margin-left: 19px;
 }
