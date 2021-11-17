@@ -44,9 +44,9 @@ const User = () => {
                 </div>
             </div>
             <div className={usercss.middleContainer}>
-                <h2>
+                <p className={usercss.checkinTitle}>
                     My Checkins:
-                </h2>
+                </p>
                 <div className={usercss.checkin}>
                     {userArr.map((checkin) => (
                         <CheckInCard key={checkin.id} checkin={checkin} />

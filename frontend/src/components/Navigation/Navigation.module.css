@@ -59,8 +59,10 @@
     cursor: pointer;
 }
 
+.logoutbtn:hover {
+    color: #e0b654;
+}
+
 .userText{
     font-size: 15px;
-    /* width: 100px; */
-    margin-left: 19px;
 }
