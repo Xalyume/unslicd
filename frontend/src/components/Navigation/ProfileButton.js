@@ -11,10 +11,10 @@ function ProfileButton({ user }) {
 
     const [showMenu, setShowMenu] = useState(false);
 
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
+    // const openMenu = () => {
+    //     if (showMenu) return;
+    //     setShowMenu(true);
+    // };
 
     useEffect(() => {
         if (!showMenu) return;
@@ -37,11 +37,11 @@ function ProfileButton({ user }) {
 
     return (
         <div className={navcss.sectionsTwo}>
-            <button onClick={openMenu} className={navcss.profile}>
+            {/* <button onClick={openMenu} className={navcss.profile}> */}
                 <img src={"https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"}
                     alt="profile_pic" className={navcss.pic} />
-            </button>
-            {showMenu && (
+            {/* </button> */}
+            {/* {showMenu && ( */}
                 <div className={navcss.userText}>
                     <p className={navcss.btn}>{user.username}</p>
                     <p className={navcss.btn}>{user.email}</p>
@@ -49,7 +49,7 @@ function ProfileButton({ user }) {
                         <button onClick={logout} className={navcss.logoutbtn}>Log Out</button>
                     </p>
                 </div>
-            )}
+            {/* )} */}
         </div>
     );
 }
