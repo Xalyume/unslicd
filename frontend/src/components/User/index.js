@@ -43,10 +43,15 @@ const User = () => {
                     <Link to='/addstore' className={usercss.btn}>Add A New Store</Link>
                 </div>
             </div>
-            <div className={usercss.checkin}>
-                {userArr.map((checkin) => (
-                    <CheckInCard key={checkin.id} checkin={checkin} />
-                ))}
+            <div className={usercss.middleContainer}>
+                <h2>
+                    My Checkins:
+                </h2>
+                <div className={usercss.checkin}>
+                    {userArr.map((checkin) => (
+                        <CheckInCard key={checkin.id} checkin={checkin} />
+                    ))}
+                </div>
             </div>
             <div className={usercss.links}>
                 <Link className={usercss.btn} to='/slices'>All Slices</Link>
