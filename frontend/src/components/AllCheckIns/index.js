@@ -12,7 +12,7 @@ function AllCheckIns() {
     const dispatch = useDispatch();
 
     const sessionUser = useSelector(state => state.session.user);
-    const checkIns = useSelector(state => state.checkins);
+    const checkIns = useSelector(state => state.checkIns);
 
     const checkinArr = Object.values(checkIns)
 
@@ -20,14 +20,21 @@ function AllCheckIns() {
         dispatch(getCheckIn())
     }, [dispatch])
 
+    console.log(checkinArr);
+
     if (!sessionUser) return (
         <Redirect to='/login' />
     )
 
-    console.log(checkinArr);
-
     return (
-        null
+        <div>
+            <p>Global Checkins!</p>
+            <div>
+                {checkinArr.map((checkin) => (
+                    <CheckInCard key={checkin.id} checkin={checkin} />
+                ))}
+            </div>
+        </div>
     )
 }
 
