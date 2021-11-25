@@ -3,9 +3,15 @@ import { csrfFetch } from './csrf';
 const GET_CHECK = "checkIn/GET"
 const ADD_CHECK = "checkIn/ADD"
 const DEL_CHECK = "checkIn/DELETE"
+const GET_ALL_CHECK = "checkIn/GET_ALL"
 
 const get = checkIns => ({
     type: GET_CHECK,
+    checkIns,
+})
+
+const getAll = checkIns => ({
+    type: GET_ALL_CHECK,
     checkIns,
 })
 
@@ -70,12 +76,24 @@ export const deleteCheckin = (id) => async dispatch => {
     }
 }
 
+export const getAllCheckIn = () => async dispatch => {
+    const response = await csrfFetch('/api/checkins/all')
+
+    const checkIns = await response.json();
+
+    dispatch(getAll(checkIns));
+}
+
 const initialState = {};
 
 const checkInReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case GET_CHECK:
+            newState = {}
+            action.checkIns.forEach((checkIn) => newState[checkIn.id] = checkIn)
+            return newState;
+        case GET_ALL_CHECK:
             newState = {}
             action.checkIns.forEach((checkIn) => newState[checkIn.id] = checkIn)
             return newState;

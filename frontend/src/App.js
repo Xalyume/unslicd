@@ -10,6 +10,7 @@ import SliceForm from './components/SliceForm'
 import StoreForm from './components/StoreForm'
 import Slice from './components/Slices';
 import Store from './components/Stores'
+import AllCheckIns from './components/AllCheckIns';
 import Footer from './components/FooterLinks';
 
 import * as sessionActions from "./store/session";
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route path="/stores">
             <Store />
+          </Route>
+          <Route path="/checkins">
+            <AllCheckIns />
           </Route>
           <Route>
             <h1>PAGE NOT FOUND</h1>
