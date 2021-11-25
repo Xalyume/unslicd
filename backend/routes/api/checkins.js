@@ -38,6 +38,16 @@ router.get('/', restoreUser, asyncHandler(async (req, res) => {
     return res.json(checkIns);
 }))
 
+router.get('/all', restoreUser, asyncHandler(async (req, res) => {
+
+    const allCheckIns = await CheckIn.findAll({
+        order: [["createdAt", "ASC"]],
+        include: [User, PizzaSlice, Store],
+    });
+
+    return res.json(allCheckIns);
+}))
+
 router.post('/', validateSlice, asyncHandler(async (req, res) => {
     let { storeId, userId, sliceId, review, rating, image } = req.body;
 

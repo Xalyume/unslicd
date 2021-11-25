@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getCheckIn } from '../../store/checkin';
+import { getAllCheckIn } from '../../store/checkin';
 
 import CheckInCard from '../../components/User/CheckInCard'
 
@@ -17,7 +17,7 @@ function AllCheckIns() {
     const checkinArr = Object.values(checkIns)
 
     useEffect(() => {
-        dispatch(getCheckIn())
+        dispatch(getAllCheckIn())
     }, [dispatch])
 
     console.log(checkinArr);
