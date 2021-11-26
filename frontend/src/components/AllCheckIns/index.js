@@ -27,9 +27,9 @@ function AllCheckIns() {
     )
 
     return (
-        <div>
-            <p>Global Checkins!</p>
-            <div>
+        <div className={checkin.outer_container}>
+            <p className={checkin.title_container}>Global Checkins!</p>
+            <div className={checkin.card_container}>
                 {checkinArr.map((checkin) => (
                     <CheckInCard key={checkin.id} checkin={checkin} />
                 ))}
