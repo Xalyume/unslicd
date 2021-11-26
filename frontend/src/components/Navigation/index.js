@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 
@@ -11,7 +11,9 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <>
+                <ProfileButton user={sessionUser} />
+            </>
         );
     } else {
         sessionLinks = (
@@ -26,6 +28,7 @@ function Navigation({ isLoaded }) {
         <div className={navigationcss.navContainer}>
             <div className={navigationcss.sectionsOne}>
                 <NavLink className={`${navigationcss.btn} ${navigationcss.home}`} exact to="/">UNSLIC'D</NavLink>
+                <NavLink className={navigationcss.global_button}to="/checkins">All Check-Ins</NavLink>
             </div>
             <div className={navigationcss.sectionsTwo}>
                 {isLoaded && sessionLinks}

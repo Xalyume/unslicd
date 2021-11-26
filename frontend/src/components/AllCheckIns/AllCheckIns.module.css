@@ -7,9 +7,10 @@
 }
 
 .title_container {
-    margin: 1%;
+    margin: 2% 1%;
     font-weight: bold;
     text-align: center;
+    font-size: 35px;
 
 }
 
