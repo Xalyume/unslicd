@@ -9,10 +9,16 @@ function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
+    let allCheckIns;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <>
+                <ProfileButton user={sessionUser} />
+            </>
         );
+        allCheckIns = (
+            <NavLink className={navigationcss.global_button} to="/checkins">All Check-Ins</NavLink>
+        )
     } else {
         sessionLinks = (
             <>
@@ -26,6 +32,7 @@ function Navigation({ isLoaded }) {
         <div className={navigationcss.navContainer}>
             <div className={navigationcss.sectionsOne}>
                 <NavLink className={`${navigationcss.btn} ${navigationcss.home}`} exact to="/">UNSLIC'D</NavLink>
+                {isLoaded && allCheckIns}
             </div>
             <div className={navigationcss.sectionsTwo}>
                 {isLoaded && sessionLinks}

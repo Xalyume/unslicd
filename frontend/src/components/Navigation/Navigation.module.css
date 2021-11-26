@@ -66,3 +66,10 @@
 .userText{
     font-size: 15px;
 }
+
+.global_button {
+    margin: 0 2%;
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+}
