@@ -11,6 +11,7 @@ import StoreForm from './components/StoreForm'
 import Slice from './components/Slices';
 import Store from './components/Stores'
 import AllCheckIns from './components/AllCheckIns';
+import UserPage from './components/UserPage';
 import Footer from './components/FooterLinks';
 
 import * as sessionActions from "./store/session";
@@ -52,6 +53,9 @@ function App() {
           </Route>
           <Route path="/checkins">
             <AllCheckIns />
+          </Route>
+          <Route path="/user/:userId">
+            <UserPage />
           </Route>
           <Route>
             <h1>PAGE NOT FOUND</h1>
