@@ -8,6 +8,10 @@ function UserPage() {
 
     const sessionUser = useSelector(state => state.session.user);
 
+    if (sessionUser.id === parseInt(userId)) {
+        history.push('/')
+    }
+
     if (!sessionUser) return (
         <Redirect to='/login' />
     )
