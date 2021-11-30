@@ -58,7 +58,6 @@ function UserPage() {
     if (!user.id) {
         return null;
     } else {
-        console.log('WE THIS THIS', user)
         date = user?.createdAt.split('T');
         membership = date[0].split('-');
     }

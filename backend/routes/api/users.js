@@ -51,7 +51,6 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const userId = req.params.id;
-    console.log("userId", userId)
     const user = await User.findByPk(+userId);
     return res.json(user);
 }));
