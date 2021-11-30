@@ -4,6 +4,7 @@ import sessionReducer from "./session";
 import sliceReducer from "./slice";
 import storeReducer from "./store";
 import checkInReducer from "./checkin";
+import userReducer from "./user";
 
 const rootReducer = combineReducers({
   // add reducer functions here
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   slices: sliceReducer,
   stores: storeReducer,
   checkIns: checkInReducer,
+  user: userReducer,
 });
 
 let enhancer;

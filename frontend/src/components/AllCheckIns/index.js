@@ -20,8 +20,6 @@ function AllCheckIns() {
         dispatch(getAllCheckIn())
     }, [dispatch])
 
-    console.log(checkinArr);
-
     if (!sessionUser) return (
         <Redirect to='/login' />
     )

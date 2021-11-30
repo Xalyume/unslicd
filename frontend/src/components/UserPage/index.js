@@ -3,6 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Redirect } from 'react-router-dom';
 
 import { getAllCheckIn } from '../../store/checkin';
+import { getUser } from '../../store/user';
+
+import CheckInCard from '../../components/User/CheckInCard'
+
+import css from './UserPage.module.css'
 
 function UserPage() {
     const dispatch = useDispatch();
@@ -11,20 +16,38 @@ function UserPage() {
 
     const sessionUser = useSelector(state => state.session.user);
     const checkIns = useSelector(state => state.checkIns);
+    const user = useSelector(state => state.user);
 
     const checkInArr = Object.values(checkIns)
     const userCheckin = checkInArr.filter((element) => {
-
-        return element.userId === parseInt(userId)
+        return element.userId === +userId
     })
 
-    console.log(userCheckin)
+
+    let checkInCards;
+    if (!userCheckin.length) {
+        checkInCards = (
+            <p>This user has not made any checkins!</p>
+        )
+    } else {
+        checkInCards = (
+            <>
+                {userCheckin.map((checkin) => (
+                    <CheckInCard key={checkin.id} checkin={checkin} />
+                ))}
+            </>
+        )
+    }
+
+    let date;
+    let membership;
 
     useEffect(() => {
-        dispatch(getAllCheckIn())
-    }, [dispatch])
+        dispatch(getAllCheckIn());
+        dispatch(getUser(+userId));
+    }, [dispatch, userId])
 
-    if (sessionUser.id === parseInt(userId)) {
+    if (sessionUser.id === +userId) {
         history.push('/')
     }
 
@@ -32,8 +55,36 @@ function UserPage() {
         <Redirect to='/login' />
     )
 
+    if (!user.id) {
+        return null;
+    } else {
+        console.log('WE THIS THIS', user)
+        date = user?.createdAt.split('T');
+        membership = date[0].split('-');
+    }
+
     return (
-        <h1>We've hit the user page!</h1>
+        <div className={css.user_container}>
+            <div>
+                <p className={css.checkin_title}>
+                    User's Checkins:
+                </p>
+                <div className={css.checkin}>
+                    {checkInCards}
+                </div>
+            </div>
+            <div className={css.profile}>
+                <p>
+                    User Info
+                </p>
+                <img src={"https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"}
+                    alt="profile_pic" className={css.profilepic}/>
+                <div className={css.user_info}>
+                    <p>Username: {user?.username}</p>
+                    <p>Member Since: {membership[1]}/{membership[2]}/{membership[0]}</p>
+                </div>
+            </div>
+        </div>
     )
 }
 

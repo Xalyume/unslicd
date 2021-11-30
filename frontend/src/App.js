@@ -54,7 +54,7 @@ function App() {
           <Route path="/checkins">
             <AllCheckIns />
           </Route>
-          <Route path="/user/:userId">
+          <Route path="/users/:userId">
             <UserPage />
           </Route>
           <Route>
