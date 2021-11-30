@@ -44,14 +44,16 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
     });
 }))
 
-router.get('/', asyncHandler(async (req, res) => {
-    const users = await User.findAll();
-    return res.json(users);
-}));
+// router.get('/', asyncHandler(async (req, res) => {
+//     const users = await User.findAll();
+//     return res.json(users);
+// }));
 
-router.get('/', asyncHandler(async (req, res) => {
-    const users = await User.findAll();
-    return res.json(users);
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
+    const userId = req.params.id;
+    console.log("userId", userId)
+    const user = await User.findByPk(+userId);
+    return res.json(user);
 }));
 
 module.exports = router;

@@ -1,17 +1,18 @@
 import { csrfFetch } from './csrf';
 
-const GET_USERS = "user/GET"
+const GET_USER = "user/GET"
 
-const get = users => ({
-    type: GET_USERS,
-    users,
+const get = user => ({
+    type: GET_USER,
+    user,
 })
 
-export const getUsers = () => async dispatch => {
-    const response = await csrfFetch('/api/users')
-    const users = await response.json();
 
-    dispatch(get(users));
+export const getUser = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/users/${id}`)
+    const user = await response.json();
+
+    dispatch(get(user));
 }
 
 const initialState = {};
@@ -19,9 +20,9 @@ const initialState = {};
 const userReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
-        case GET_USERS:
-            newState = {}
-            action.users.forEach(user => newState[user.id] = user)
+        case GET_USER:
+            newState = {...action.user}
+            // console.log("this is action.user", action.user)
             return newState;
         default:
             return state;

@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   slices: sliceReducer,
   stores: storeReducer,
   checkIns: checkInReducer,
-  users: userReducer,
+  user: userReducer,
 });
 
 let enhancer;
