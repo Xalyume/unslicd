@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, Redirect } from 'react-router-dom';
 
 import { getAllCheckIn } from '../../store/checkin';
+import { getUsers } from '../../store/user';
+
+import CheckInCard from '../../components/User/CheckInCard'
+
 
 function UserPage() {
     const dispatch = useDispatch();
@@ -11,17 +15,16 @@ function UserPage() {
 
     const sessionUser = useSelector(state => state.session.user);
     const checkIns = useSelector(state => state.checkIns);
+    const users = useSelector(state => state.users);
 
     const checkInArr = Object.values(checkIns)
     const userCheckin = checkInArr.filter((element) => {
-
         return element.userId === parseInt(userId)
     })
 
-    console.log(userCheckin)
-
     useEffect(() => {
-        dispatch(getAllCheckIn())
+        dispatch(getAllCheckIn());
+        dispatch(getUsers());
     }, [dispatch])
 
     if (sessionUser.id === parseInt(userId)) {
@@ -33,7 +36,9 @@ function UserPage() {
     )
 
     return (
-        <h1>We've hit the user page!</h1>
+        <div>
+
+        </div>
     )
 }
 
