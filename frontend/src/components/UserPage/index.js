@@ -7,7 +7,6 @@ import { getUser } from '../../store/user';
 
 import CheckInCard from '../../components/User/CheckInCard'
 
-
 function UserPage() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -22,7 +21,24 @@ function UserPage() {
         return element.userId === +userId
     })
 
-    console.log("this is the user", user)
+
+    let checkInCards;
+    if (!userCheckin.length) {
+        checkInCards = (
+            <p>This user has not made any checkins!</p>
+        )
+    } else {
+        checkInCards = (
+            <>
+                {userCheckin.map((checkin) => (
+                    <CheckInCard key={checkin.id} checkin={checkin} />
+                ))}
+            </>
+        )
+    }
+
+    let date;
+    let membership;
 
     useEffect(() => {
         dispatch(getAllCheckIn());
@@ -37,9 +53,35 @@ function UserPage() {
         <Redirect to='/login' />
     )
 
+    if (!user.id) {
+        return null;
+    } else {
+        console.log('WE THIS THIS', user)
+        date = user?.createdAt.split('T');
+        membership = date[0].split('-');
+    }
+
     return (
         <div>
-
+            <div>
+                <p>
+                    User's Checkins:
+                </p>
+                <div>
+                    {checkInCards}
+                </div>
+            </div>
+            <div>
+                <p>
+                    User Info
+                </p>
+                <img src={"https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"}
+                    alt="profile_pic" />
+                <div>
+                    <p>Username: {user?.username}</p>
+                    <p>Member Since: {membership[1]}/{membership[2]}/{membership[0]}</p>
+                </div>
+            </div>
         </div>
     )
 }

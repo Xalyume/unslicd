@@ -22,7 +22,6 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_USER:
             newState = {...action.user}
-            // console.log("this is action.user", action.user)
             return newState;
         default:
             return state;
