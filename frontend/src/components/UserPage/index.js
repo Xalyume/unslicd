@@ -7,6 +7,8 @@ import { getUser } from '../../store/user';
 
 import CheckInCard from '../../components/User/CheckInCard'
 
+import css from './UserPage.module.css'
+
 function UserPage() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -62,22 +64,22 @@ function UserPage() {
     }
 
     return (
-        <div>
+        <div className={css.user_container}>
             <div>
-                <p>
+                <p className={css.checkin_title}>
                     User's Checkins:
                 </p>
-                <div>
+                <div className={css.checkin}>
                     {checkInCards}
                 </div>
             </div>
-            <div>
+            <div className={css.profile}>
                 <p>
                     User Info
                 </p>
                 <img src={"https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"}
-                    alt="profile_pic" />
-                <div>
+                    alt="profile_pic" className={css.profilepic}/>
+                <div className={css.user_info}>
                     <p>Username: {user?.username}</p>
                     <p>Member Since: {membership[1]}/{membership[2]}/{membership[0]}</p>
                 </div>
