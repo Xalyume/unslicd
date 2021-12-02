@@ -151,3 +151,13 @@
     margin-bottom: 2%;
     color: #C04E44;
 }
+
+.username_tag {
+  text-decoration: none;
+  color: black;
+}
+
+.username_tag:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
