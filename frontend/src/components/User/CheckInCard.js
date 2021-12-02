@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import DelCheckIn from '../DelCheckInModal/';
@@ -32,7 +32,8 @@ const SliceCard = ({ checkin }) => {
     return (
         <div className={checkincss.cardContainer}>
             <div className={checkincss.cardInfo}>
-                <p className={checkincss.checkInText}>{checkin?.User?.username}
+                <p className={checkincss.checkInText}>
+                    <Link to={`/users/${checkin?.User?.id}`} className={checkincss.username_tag}>{checkin?.User?.username}</Link>
                     <span> had </span>
                     <span>{checkin?.PizzaSlouse?.name}</span>
                     <span> at </span>
