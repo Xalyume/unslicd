@@ -14,6 +14,7 @@ const SignupFormPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmed, setConfirmed] = useState('');
+    const [profilePicture, setProfilePicture] = useState('');
 
     const [errors, setErrors] = useState([]);
 
@@ -26,7 +27,7 @@ const SignupFormPage = () => {
 
         if (password === confirmed) {
             setErrors([]);
-            return dispatch(sessionActions.signupUser({ email, username, password }))
+            return dispatch(sessionActions.signupUser({ email, username, password, profilePicture }))
                 .catch(async (res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
@@ -85,6 +86,16 @@ const SignupFormPage = () => {
                                 type="password"
                                 value={confirmed}
                                 onChange={(e) => setConfirmed(e.target.value)}
+                            />
+                        </label>
+                    </div>
+                    <div>
+                        <label> Profile Picture (URL)
+                            <input
+                                className={signupcss.formInput}
+                                type="text"
+                                value={profilePicture}
+                                onChange={(e) => setProfilePicture(e.target.value)}
                             />
                         </label>
                     </div>
