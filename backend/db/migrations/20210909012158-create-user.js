@@ -22,6 +22,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING.BINARY
       },
+      profilePicture: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        defaultValue: "https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

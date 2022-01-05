@@ -29,6 +29,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60, 60]
       }
+    },
+    profilePicture: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"
     }
   },
     {
@@ -85,6 +90,7 @@ module.exports = (sequelize, DataTypes) => {
       username,
       email,
       hashedPassword,
+      profilePicture
     });
     return await User.scope('currentUser').findByPk(user.id);
   };
