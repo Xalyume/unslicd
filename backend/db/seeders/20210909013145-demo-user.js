@@ -1,9 +1,7 @@
 'use strict';
 const faker = require('faker');
 const bcrypt = require('bcryptjs');
-const Sequelize = require('sequelize');
-
-const Op = Sequelize.Op;
+// const Sequelize = require('sequelize');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -43,13 +41,8 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      */
-    return queryInterface.bulkDelete('Users', null, {});
+    // const Op = Sequelize.Op;
+    return queryInterface.bulkDelete('Users');
     /* {
      username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
     } */
