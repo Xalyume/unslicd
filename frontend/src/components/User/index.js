@@ -28,7 +28,7 @@ const User = () => {
         <div className={usercss.container}>
             <div className={usercss.profileBtnContainer}>
                 <div className={usercss.profile}>
-                    <img src={"https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"}
+                    <img src={sessionUser?.profilePicture}
                         alt="profile_pic" className={usercss.pic} />
                     <div className={usercss.userInfo}>
                         <p>Welcome Back! {sessionUser.username}</p>

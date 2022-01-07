@@ -53,6 +53,7 @@ export const signupUser = (signupData) => async dispatch => {
         })
     });
 
+    console.log("we've hit this part")
     const newUser = await response.json();
     dispatch(setUser(newUser.user));
     return response;

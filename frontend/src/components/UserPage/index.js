@@ -76,7 +76,7 @@ function UserPage() {
                 <p>
                     User Info
                 </p>
-                <img src={"https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"}
+                <img src={user?.profilePicture}
                     alt="profile_pic" className={css.profilepic}/>
                 <div className={css.user_info}>
                     <p>Username: {user?.username}</p>
