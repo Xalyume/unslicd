@@ -32,8 +32,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     profilePicture: {
       type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: "https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"
     }
   },
     {
