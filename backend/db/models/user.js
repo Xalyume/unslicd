@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     profilePicture: {
       type: DataTypes.STRING,
+      defaultValue: "https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"
     }
   },
     {
@@ -58,9 +59,9 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.CheckIn, { foreignKey: 'userId' })
   };
   User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
-    const { id, username, email, createdAt } = this; // context will be the User instance
+    const { id, username, email, createdAt, profilePicture } = this; // context will be the User instance
 
-    return { id, username, email, createdAt };
+    return { id, username, email, createdAt, profilePicture };
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());

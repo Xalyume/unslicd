@@ -9,6 +9,8 @@ function ProfileButton({ user }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    console.log("this is the user", user)
+
     const [showMenu, setShowMenu] = useState(false);
 
     // const openMenu = () => {
