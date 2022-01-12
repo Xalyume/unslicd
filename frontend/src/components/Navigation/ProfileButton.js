@@ -9,6 +9,8 @@ function ProfileButton({ user }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    console.log("this is the user", user)
+
     const [showMenu, setShowMenu] = useState(false);
 
     // const openMenu = () => {
@@ -38,7 +40,7 @@ function ProfileButton({ user }) {
     return (
         <div className={navcss.sectionsTwo}>
             {/* <button onClick={openMenu} className={navcss.profile}> */}
-                <img src={"https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"}
+                <img src={user.profilePicture}
                     alt="profile_pic" className={navcss.pic} />
             {/* </button> */}
             {/* {showMenu && ( */}
