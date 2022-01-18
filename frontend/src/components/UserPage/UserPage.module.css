@@ -12,6 +12,7 @@
     justify-content: flex-start;
     align-items: center;
     padding-left: 8px;
+    padding-top: 15px;
 }
 
 .profile_inner {
@@ -41,7 +42,7 @@
     flex-direction: column-reverse;
     border: 1px solid white;
     padding: 3% .8%;
-    width: 120%;
+    width: 100%;
     /* max-width: 535px; */
     background-color: #e0b654;
     border-radius: 5px;
