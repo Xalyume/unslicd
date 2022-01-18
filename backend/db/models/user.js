@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     profilePicture: {
       type: DataTypes.STRING,
+      allowNull: false,
       defaultValue: "https://bellfund.ca/wp-content/uploads/2018/03/demo-user.jpg"
     }
   },
@@ -85,12 +86,21 @@ module.exports = (sequelize, DataTypes) => {
   };
   User.signup = async function ({ username, email, password, profilePicture }) {
     const hashedPassword = bcrypt.hashSync(password);
-    const user = await User.create({
-      username,
-      email,
-      hashedPassword,
-      profilePicture
-    });
+    let user;
+    if (profilePicture === "") {
+      user = await User.create({
+        username,
+        email,
+        hashedPassword,
+      });
+    } else {
+      user = await User.create({
+        username,
+        email,
+        hashedPassword,
+        profilePicture
+      });
+    }
     return await User.scope('currentUser').findByPk(user.id);
   };
   return User;
