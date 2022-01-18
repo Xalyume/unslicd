@@ -103,11 +103,11 @@
 }
 
 .review {
-  font-size: 1vw;
+  font-size: 15px;
 }
 
 .rating {
-  font-size: 1vw;
+  font-size: .75vw;
 }
 
 .cardContainer {

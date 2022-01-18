@@ -72,15 +72,17 @@ function UserPage() {
                     {checkInCards}
                 </div>
             </div>
-            <div className={css.profile}>
-                <p>
-                    User Info
-                </p>
-                <img src={user?.profilePicture}
-                    alt="profile_pic" className={css.profilepic}/>
-                <div className={css.user_info}>
-                    <p>Username: {user?.username}</p>
-                    <p>Member Since: {membership[1]}/{membership[2]}/{membership[0]}</p>
+            <div className={css.profile_outer}>
+                <div className={css.profile_inner}>
+                    <p>
+                        User Info
+                    </p>
+                    <img src={user?.profilePicture}
+                        alt="profile_pic" className={css.profilepic} />
+                    <div className={css.user_info}>
+                        <p>Username: {user?.username}</p>
+                        <p>Member Since: {membership[1]}/{membership[2]}/{membership[0]}</p>
+                    </div>
                 </div>
             </div>
         </div>
